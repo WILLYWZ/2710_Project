@@ -84,7 +84,7 @@ insert into products (productID, name, inventoryAmount, price, type) values
 	('2', 'chicken wings', 4, 14.99 ,'food'),
 	('3', 'bowl', 9, 1.99, 'home'),
 	('4', 'notebook', 21, 2.50, 'office'),
-	('5', 'bicycle', 7 , 299.00, 'home');
+	('5', 'bicycle', 7 , 299.00, 'outdoor');
 
 
 # DO NOT CHANGE REGION TABLE
