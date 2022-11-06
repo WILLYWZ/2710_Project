@@ -75,6 +75,12 @@ CREATE TABLE Salespersons (
     foreign Key (storeAssigned) references Store(storeID)
 );
 
-insert into Customers (customerID, name, address, kind)
-values ('50','Tom','5525 Columbo St, Pittsburgh, PA 15206','home');
+insert into Customers (customerID, name, address, kind) values 
+	('50','Tom','5525 Columbo St, Pittsburgh, PA 15206','home'),
+	('38','Melinda','1315 Kentucky St, Export, PA 15632','home'),
+	('61','Alisa','7953 Susquehanna St, Pittsburgh, PA 15221','home'),
+	('74','Rick','2810 Spring St, Pittsburgh, PA 15210','home'),
+	('19','Cameron','196 Martha Ave, Pittsburgh, PA 15209','home');
+    
+select * from customers;
 
