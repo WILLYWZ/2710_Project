@@ -75,14 +75,17 @@ CREATE TABLE Salespersons (
     foreign Key (storeAssigned) references Store(storeID)
 );
 
-# INSERT DATA
 
+
+
+# INSERT DATA
 insert into products (productID, name, inventoryAmount, price, type) values 
 	('1', 'umbella', 11, 19.99, 'home'),
 	('2', 'chicken wings', 4, 14.99 ,'food'),
 	('3', 'bowl', 9, 1.99, 'home'),
 	('4', 'notebook', 21, 2.50, 'office'),
 	('5', 'bicycle', 7 , 299.00, 'home');
+
 
 # DO NOT CHANGE REGION TABLE
 insert into region (regionID, regionName, RegionManager) values 
@@ -92,6 +95,7 @@ insert into region (regionID, regionName, RegionManager) values
 	('4', 'West', 'Selina'),
 	('5', 'Central', 'Will');
     
+ 
 select * from customers;
 select * from products;
 select * from region;
