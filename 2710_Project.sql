@@ -37,7 +37,6 @@ CREATE TABLE Transactions (
     
     foreign Key (productID) references Products(productID),
     foreign Key (customerID) references Customers(customerID)
-    
 );
 
 
@@ -77,8 +76,15 @@ CREATE TABLE Salespersons (
 
 
 
-
 # INSERT DATA
+insert into customers (customerID, name, address, kind) values 
+	('50', 'Tom', '5525 Columbo St, Pittsburgh, PA 15206', 'home'),
+	('38', 'Melinda', '1315 Kentucky St, Export, PA 15632', 'home'),
+	('61', 'Alisa', '7953 Susquehanna St, Pittsburgh, PA 15221', 'home'),
+	('74', 'Rick', '2810 Spring St, Pittsburgh, PA 15210', 'home'),
+	('19', 'Cameron', '196 Martha Ave, Pittsburgh, PA 15209', 'home');
+
+
 insert into products (productID, name, inventoryAmount, price, type) values 
 	('1', 'umbella', 11, 19.99, 'home'),
 	('2', 'chicken wings', 4, 14.99 ,'food'),
@@ -95,11 +101,11 @@ insert into region (regionID, regionName, RegionManager) values
 	('4', 'West', 'Selina'),
 	('5', 'Central', 'Will');
     
- 
 select * from customers;
 select * from products;
 select * from region;
 select * from salespersons;
 select * from store;
 select * from transactions;
+
 
