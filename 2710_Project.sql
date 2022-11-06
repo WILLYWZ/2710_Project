@@ -69,10 +69,12 @@ CREATE TABLE Salespersons (
     email VARCHAR(255),
     jobTitile VARCHAR(255),
     storeAssigned INT,
-    salary DECIMAL(10 , 2),
+    salary DECIMAL(10,2),
     
     primary key (name),
     foreign Key (storeAssigned) references Store(storeID)
 );
 
+insert into Customers (customerID, name, address, kind)
+values ('50','Tom','5525 Columbo St, Pittsburgh, PA 15206','home');
 
