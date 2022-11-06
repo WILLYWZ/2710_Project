@@ -82,7 +82,7 @@ CREATE TABLE Salespersons (
 insert into products (productID, name, inventoryAmount, price, type) values 
 	('1', 'umbella', 11, 19.99, 'home'),
 	('2', 'chicken wings', 4, 14.99 ,'food'),
-	('3', 'bowl', 9, 1.99, 'home'),
+	('3', 'bowl', 9, 1.99, 'kitchen'),
 	('4', 'notebook', 21, 2.50, 'office'),
 	('5', 'bicycle', 7 , 299.00, 'outdoor');
 
