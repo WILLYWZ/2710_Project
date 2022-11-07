@@ -120,19 +120,33 @@ insert into region (regionID, regionName, RegionManager) values
 # I think 5 stores are enough, and i changed salesHeadCount, cuz i think i need to match up with salespersons.
 # 15 Salesperson needed
 insert into store (storeID, address, manager, salesHeadCount, regionID) values
-('1111', '50 University Ave, Los Gatos, CA 95030', 'Doris', 3, '4'),
-('1112', '429 2nd Ave W, Seattle, WA 98119', 'Isabel', 3, '1'),
-('1113', '424 Park Ave S, New York, NY 10016', 'Patrick', 3, '3'),
-('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Boggie', 3, '2'),
+('1111', '50 University Ave, Los Gatos, CA 95030', 'Sean', 3, '4'),
+('1112', '429 2nd Ave W, Seattle, WA 98119', 'Peter', 3, '1'),
+('1113', '424 Park Ave S, New York, NY 10016', 'Jane', 3, '3'),
+('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Mindy', 3, '2'),
 ('1115', '1074 Del Ebro Dr, Ballwin, MO 63011', 'Adrean', 3, '5');
 
 
 insert into salespersons (name, address, email, jobTitle, storeAssigned, salary) values
-('Jane', '26 Vandam St, New York, NY 10013', 'jane11@gmail.com', 'sales rep', '1112', 3500),
-('Jimmy', '8 Spruce St, New York, NY 10038', 'jimmylookingforjobs@gmail.com', 'store manager', '1113', 4200),
-('Spencer', '1641 Lincoln Blvd, Santa Monica, CA 90404', 'spencerlee@hotmail.com', 'store manager', '1111', 5400),
-('Alex', '1641 Lincoln Blvd, Santa Monica, CA 90404', 'alex97@gmail.com', 'sales rep', '1111', 3890),
-('Mindy', '13675 Lake Vining Dr, Orlando, FL 32821', 'mindycso@outlook.com', 'chief sales officer', '1114', 6550);
+(‘Sean’, ‘3456 Cattaraugus Ave, Culver City, CA 90232', 'sean119@hotmail.com', 'store manager', '1111', 6300),
+('Alex', '1641 Lincoln Blvd, Santa Monica, CA 90404', 'alex97@gmail.com', 'sales rep', '1111', 4100),
+('Spencer', '1751 Centinela Ave, Santa Monica, CA 90404', 'spencerlee@hotmail.com', ’sales rep’, '1111', 4100),
+
+('Peter', '6056 37th Ave SW, Seattle, WA 98126', 'petefree@hotmail.com', ’store manager’, '1111', 6000),
+('Robert', '3207 S Byron St, Seattle, WA 98144', 'bob1983@hotmail.com', ’sales rep’, '1111', 3500),
+('Chris', '4431 S Shell St, Seattle, WA 98118', 'christopher1994@hotmail.com', ’sales rep’, '1111', 3500),
+ 
+('Jane', '26 Vandam St, New York, NY 10013', 'jane11@gmail.com', 'store manager’, '1113’, 6300),
+('Jimmy', '8 Spruce St, New York, NY 10038', 'jimmylookingforjobs@gmail.com', 'sales rep', '1113', 4300),
+('Steven', '1108 E 17th St, Brooklyn, NY 11230', 'stevenworks@gmail.com', 'sales rep', '1113', 4400),
+
+('Mindy', '1009 Plato Ave, Orlando, FL 32809', 'mindycso@outlook.com', 'store manager', '1114', 6550)
+('Melinda', '328 E Cypress St, Orlando, FL 32824', 'melinawork@outlook.com', 'sales rep', '1114', 3900)
+('Leon', '2219 N Hastings St, Orlando, FL 32808', 'leon87@outlook.com', 'sales rep', '1114', 3900)
+
+(‘Adrean, '1845 Bopp Rd, Des Peres, MO 63131', ‘Adrean86@outlook.com', ’store manager’, '1115’, 5900)
+('Delean', '13241 Rosebank Ln, St. Louis, MO 63122','kenworks@outlook.com', ’sales rep’, '1115, 3100),
+('Ken', '16 Timberleigh Ct, Ballwin, MO 63021', 'kenworks@outlook.com', ’sales rep, '1115’, 3100);
 
 
 insert into transactions (transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID) values
