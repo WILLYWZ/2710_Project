@@ -122,9 +122,9 @@ insert into region (regionID, regionName, RegionManager) values
 insert into store (storeID, address, manager, salesHeadCount, regionID) values
 ('1111', '50 University Ave, Los Gatos, CA 95030', 'Doris', 3, '4'),
 ('1112', '429 2nd Ave W, Seattle, WA 98119', 'Isabel', 3, '1'),
-('1113', '424 Park Ave S, New York, NY 10016', 'Patrick', 2, '3'),
-('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Boggie', 5, '2'),
-('1115', '846 N Whiting Cir, Mesa, AZ 85213, 'Adrean', 2, '4');
+('1113', '424 Park Ave S, New York, NY 10016', 'Patrick', 3, '3'),
+('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Boggie', 3, '2'),
+('1115', '1074 Del Ebro Dr, Ballwin, MO 63011', 'Adrean', 3, '5');
 
 
 insert into salespersons (name, address, email, jobTitle, storeAssigned, salary) values
