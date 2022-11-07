@@ -1,21 +1,20 @@
+
 CREATE TABLE Customers (
     customerID VARCHAR(20),
     name VARCHAR(255),
     address VARCHAR(255),
     kind VARCHAR(255),
-    
-    primary key (customerID)
+    PRIMARY KEY (customerID)
 );
 
 
 CREATE TABLE Products (
     productID VARCHAR(20),
     name VARCHAR(255),
-    inventoryAmount int,
-    price DECIMAL(10,2),
+    inventoryAmount INT,
+    price DECIMAL(10 , 2 ),
     type VARCHAR(255),
-    
-    primary key (productID)
+    PRIMARY KEY (productID)
 );
 
 
@@ -24,15 +23,15 @@ CREATE TABLE Transactions (
     orderNumber VARCHAR(20),
     date DATE,
     SalespersonName VARCHAR(255),
-    
     productID VARCHAR(20),
-    price DECIMAL(10,2),
-    quantity int,
+    price DECIMAL(10 , 2 ),
+    quantity INT,
     customerID VARCHAR(20),
-    
     PRIMARY KEY (transactionID),
-    foreign Key (productID) references Products(productID),
-    foreign Key (customerID) references Customers(customerID)
+    FOREIGN KEY (productID)
+        REFERENCES Products (productID),
+    FOREIGN KEY (customerID)
+        REFERENCES Customers (customerID)
 );
 
 
@@ -40,8 +39,7 @@ CREATE TABLE Region (
     regionID VARCHAR(20),
     regionName VARCHAR(255),
     regionManager VARCHAR(255),
-    
-    primary key (regionID)
+    PRIMARY KEY (regionID)
 );
 
 
@@ -51,9 +49,9 @@ CREATE TABLE Store (
     manager VARCHAR(255),
     salesHeadCount INT,
     regionID VARCHAR(20),
-    
-    primary key (storeID),
-    foreign Key (regionID) references Region(regionID)
+    PRIMARY KEY (storeID),
+    FOREIGN KEY (regionID)
+        REFERENCES Region (regionID)
 );
 
 
@@ -63,10 +61,10 @@ CREATE TABLE Salespersons (
     email VARCHAR(255),
     jobTitle VARCHAR(255),
     storeAssigned VARCHAR(20),
-    salary DECIMAL(10,2),
-    
-    primary key (name),
-    foreign Key (storeAssigned) references Store(storeID)
+    salary DECIMAL(10 , 2 ),
+    PRIMARY KEY (name),
+    FOREIGN KEY (storeAssigned)
+        REFERENCES Store (storeID)
 );
 
 
@@ -101,7 +99,7 @@ insert into products (productID, name, inventoryAmount, price, type) values
 ('7', 'TV', 3, 999.00, 'electronics'),
 ('8', 'caviar', 50, 199.00, 'food'),
 ('9', 'mattress', 2, 1099.00, 'home'),
-('10', 'bath tissue', 100, 23.99, 'home')
+('10', 'bath tissue', 100, 23.99, 'home'),
 ('11', 'earrings', 20, 89.05, 'jewelry'),
 ('12', 'helmet', 45, 15.00, 'outdoor'),
 ('13', 'flatware', 23, 9.98, 'kitchen'),
@@ -128,31 +126,29 @@ insert into store (storeID, address, manager, salesHeadCount, regionID) values
 
 
 insert into salespersons (name, address, email, jobTitle, storeAssigned, salary) values
-(‘Sean’, ‘3456 Cattaraugus Ave, Culver City, CA 90232', 'sean119@hotmail.com', 'store manager', '1111', 6300),
+('Sean', '3456 Cattaraugus Ave, Culver City, CA 90232', 'sean119@hotmail.com', 'store manager', '1111', 6300),
 ('Alex', '1641 Lincoln Blvd, Santa Monica, CA 90404', 'alex97@gmail.com', 'sales rep', '1111', 4100),
-('Spencer', '1751 Centinela Ave, Santa Monica, CA 90404', 'spencerlee@hotmail.com', ’sales rep’, '1111', 4100),
-('Peter', '6056 37th Ave SW, Seattle, WA 98126', 'petefree@hotmail.com', ’store manager’, '1112', 6000),
-('Robert', '3207 S Byron St, Seattle, WA 98144', 'bob1983@hotmail.com', ’sales rep’, '1112', 3500),
-('Chris', '4431 S Shell St, Seattle, WA 98118', 'christopher1994@hotmail.com', ’sales rep’, '1112', 3500),
-('Jane', '26 Vandam St, New York, NY 10013', 'jane11@gmail.com', 'store manager’, '1113’, 6300),
+('Spencer', '1751 Centinela Ave, Santa Monica, CA 90404', 'spencerlee@hotmail.com', 'sales rep', '1111', 4100),
+('Peter', '6056 37th Ave SW, Seattle, WA 98126', 'petefree@hotmail.com', 'store manager', '1112', 6000),
+('Robert', '3207 S Byron St, Seattle, WA 98144', 'bob1983@hotmail.com', 'sales rep', '1112', 3500),
+('Chris', '4431 S Shell St, Seattle, WA 98118', 'christopher1994@hotmail.com', 'sales rep', '1112', 3500),
+('Jane', '26 Vandam St, New York, NY 10013', 'jane11@gmail.com', 'store manager', '1113', 6300),
 ('Jimmy', '8 Spruce St, New York, NY 10038', 'jimmylookingforjobs@gmail.com', 'sales rep', '1113', 4300),
 ('Steven', '1108 E 17th St, Brooklyn, NY 11230', 'stevenworks@gmail.com', 'sales rep', '1113', 4400),
-('Mindy', '1009 Plato Ave, Orlando, FL 32809', 'mindycso@outlook.com', 'store manager', '1114', 6550)
-('Melinda', '328 E Cypress St, Orlando, FL 32824', 'melinawork@outlook.com', 'sales rep', '1114', 3900)
-('Leon', '2219 N Hastings St, Orlando, FL 32808', 'leon87@outlook.com', 'sales rep', '1114', 3900)
-(‘Adrean, '1845 Bopp Rd, Des Peres, MO 63131', ‘Adrean86@outlook.com', ’store manager’, '1115’, 5900)
-('Delean', '13241 Rosebank Ln, St. Louis, MO 63122','kenworks@outlook.com', ’sales rep’, '1115, 3100),
-('Ken', '16 Timberleigh Ct, Ballwin, MO 63021', 'kenworks@outlook.com', ’sales rep, '1115’, 3100);
+('Mindy', '1009 Plato Ave, Orlando, FL 32809', 'mindycso@outlook.com', 'store manager', '1114', 6550),
+('Melinda', '328 E Cypress St, Orlando, FL 32824', 'melinawork@outlook.com', 'sales rep', '1114', 3900),
+('Leon', '2219 N Hastings St, Orlando, FL 32808', 'leon87@outlook.com', 'sales rep', '1114', 3900),
+('Adrean', '1845 Bopp Rd, Des Peres, MO 63131', 'Adrean86@outlook.com', 'store manager', '1115', 5900),
+('Delean', '13241 Rosebank Ln, St. Louis, MO 63122','kenworks@outlook.com', 'sales rep', '1115', 3100),
+('Ken', '16 Timberleigh Ct, Ballwin, MO 63021', 'kenworks@outlook.com', 'sales rep', '1115', 3100);
 
-
-insert into transactions (transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID) values
+insert into transactions(transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID) values
 ('1999A01', 'A11110', '2019-1-1', 'Alex', '14', 63.33, 2, '100'),
 ('1999A11', 'A11111', '2019-1-13', 'Alex', '11', 89.05, 1, '103'),
 ('2000B98', 'N11112', '2018-11-11', 'Spencer', '1', 19.99, 5, '50'),
 ('2000B17', 'N11113', '2019-12-12', 'Jane', '2', 14.99, 2, '19'),
 ('2001A77', 'S500001', '2020-9-19', 'Jimmy', '13', 9.98, 15, '74'),
 ('2001N11', 'K500002', '2017-6-25', 'Jane', '16', 3.99, 1, '104');
-
 
 select * from customers;
 select * from products;
