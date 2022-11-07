@@ -117,13 +117,13 @@ insert into region (regionID, regionName, RegionManager) values
 ('4', 'West', 'Selina'),
 ('5', 'Central', 'Will');
     
-
+# I think 5 stores is enough, and i changed salesHeadCount, cuz i think i needs to match up with salespersons.
 insert into store (storeID, address, manager, salesHeadCount, regionID) values
 ('1111', '50 University Ave, Los Gatos, CA 95030', 'Doris', 3, '4'),
-('1112', '469 Broome St, New York, NY 10013', 'Isabel', 5, '3'),
-('1113', '424 Park Ave S, New York, NY 10016', 'Patrick', 15, '3'),
-('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Boggie', 19, '2'),
-('1115', '1402 S Havana St, Aurora, CO 80012', 'Magic', 22, '5');
+('1112', '469 Broome St, New York, NY 10013', 'Isabel', 2, '3'),
+('1113', '424 Park Ave S, New York, NY 10016', 'Patrick', 1, '3'),
+('1114', '1000 Universal Studios Plaza, Orlando, FL 32819', 'Boggie', 5, '2'),
+('1115', '1402 S Havana St, Aurora, CO 80012', 'Magic', 2, '5');
 
 
 insert into salespersons (name, address, email, jobTitle, storeAssigned, salary) values
