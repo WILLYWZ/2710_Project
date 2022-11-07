@@ -97,17 +97,17 @@ insert into products (productID, name, inventoryAmount, price, type) values
 ('3', 'bowl', 9, 1.99, 'kitchen'),
 ('4', 'notebook', 21, 2.50, 'office'),
 ('5', 'bicycle', 7 , 299.00, 'outdoor'),
+('6', 'vacuum', 15, 499.00, 'home'),
+('7', 'TV', 3, 999.00, 'electronics'),
+('8', 'caviar', 50, 199.00, 'food'),
+('9', 'mattress', 2, 1099.00, 'home'),
+('10', 'bath tissue', 100, 23.99, 'home')
 ('11', 'earrings', 20, 89.05, 'jewelry'),
 ('12', 'helmet', 45, 15.00, 'outdoor'),
 ('13', 'flatware', 23, 9.98, 'kitchen'),
 ('14', 'pajama', 34, 63.33, 'clothes'),
 ('15', 'table', 5, 129, 'home'),
-('16', 'americano', 100, 3.99 ,'food'),
-('6', 'vacuum', 15, 499.00, 'home'),
-('7', 'TV', 3, 999.00, 'electronics'),
-('8', 'caviar', 50, 199.00, 'food'),
-('9', 'mattress', 2, 1099.00, 'home'),
-('10', 'bath tissue', 100, 23.99, 'home');
+('16', 'americano', 100, 3.99 ,'food');
 
 
 insert into region (regionID, regionName, RegionManager) values 
@@ -139,8 +139,8 @@ insert into transactions (transactionID, orderNumber, date, SalespersonName, pro
 ('1999A11', 'A11111', '2019-1-13', 'Alex', '11', 89.05, 1, '103'),
 ('2000B98', 'N11112', '2018-11-11', 'Spencer', '1', 19.99, 5, '50'),
 ('2000B17', 'N11113', '2019-12-12', 'Jane', '2', 14.99, 2, '19'),
-('2001A77', '500001', '2020-9-19', 'Jimmy', '13', 9.98, 15, '74'),
-('2001N11', '500002', '2017-6-25', 'Jane', '16', 3.99, 1, '104');
+('2001A77', 'S500001', '2020-9-19', 'Jimmy', '13', 9.98, 15, '74'),
+('2001N11', 'K500002', '2017-6-25', 'Jane', '16', 3.99, 1, '104');
 
 
 select * from customers;
