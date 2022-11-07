@@ -117,7 +117,7 @@ insert into region (regionID, regionName, RegionManager) values
 ('4', 'West', 'Selina'),
 ('5', 'Central', 'Will');
     
-# I think 5 stores is enough, and i changed salesHeadCount, cuz i think i needs to match up with salespersons.
+# I think 5 stores are enough, and i changed salesHeadCount, cuz i think i need to match up with salespersons.
 # 15 Salesperson needed
 insert into store (storeID, address, manager, salesHeadCount, regionID) values
 ('1111', '50 University Ave, Los Gatos, CA 95030', 'Doris', 3, '4'),
