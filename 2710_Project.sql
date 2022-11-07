@@ -74,19 +74,19 @@ CREATE TABLE Salespersons (
 # INSERT DATA
 insert into customers (customerID, name, address, kind) values 
 ('50', 'Tom', '5525 Columbo St, Pittsburgh, PA 15206', 'home'),
-('38', 'Melinda', '1315 Kentucky St, Export, PA 15632', 'home'),
+('38', 'Melinda', '1315 Kentucky St, Export, PA 15632', 'business'),
 ('61', 'Alisa', '7953 Susquehanna St, Pittsburgh, PA 15221', 'home'),
 ('74', 'Rick', '2810 Spring St, Pittsburgh, PA 15210', 'home'),
-('19', 'Cameron', '196 Martha Ave, Pittsburgh, PA 15209', 'home'),
+('19', 'Cameron', '196 Martha Ave, Pittsburgh, PA 15209', 'business'),
 ('100', 'Bruce', '653 Broadway, New York, NY 10012', 'business'),
 ('101', 'Frank', '111 Dryden Rd, Ithaca, NY 15213', 'home'),
 ('102', 'Alice', '475 5th Ave, New York, NY 10017', 'business'),
 ('103', 'Adele', '475 Garner Court, Pittsburgh, PA 15213', 'home'),
 ('104', 'Chris', '655 Madison Ave, New York, NY 10065', 'business'),
 ('105', 'Kathrina', '1402 3rd Street Promenade, Santa Monica, CA 90401', 'business'),
-('1', 'Lucy', '55 Locust Ave, Rockville Centre, NY, 11570', 'business'),
+('1', 'Lucy', '55 Locust Ave, Rockville Centre, NY, 11570', 'home'),
 ('2', 'Mae', '86 Willow Rd, New Milford, CT 06776', 'business'),
-('3', 'Paula', '455 Will Isaacs Rd, Zionville, NC 28698', 'business'),
+('3', 'Paula', '455 Will Isaacs Rd, Zionville, NC 28698', 'home'),
 ('4', 'Henry', '21140 Adams Cir, Lincoln, DE 19960', 'business'),
 ('5', 'Heather','2450 Rs County Rd #4250, Point, TX 75472', 'business');
 
