@@ -83,7 +83,12 @@ insert into customers (customerID, name, address, kind) values
 ('102', 'Alice', '475 5th Ave, New York, NY 10017', 'business'),
 ('103', 'Adele', '475 Garner Court, Pittsburgh, PA 15213', 'home'),
 ('104', 'Chris', '655 Madison Ave, New York, NY 10065', 'business'),
-('105', 'Kathrina', '1402 3rd Street Promenade, Santa Monica, CA 90401', 'business');
+('105', 'Kathrina', '1402 3rd Street Promenade, Santa Monica, CA 90401', 'business'),
+('1', 'Lucy', '55 Locust Ave, Rockville Centre, NY, 11570', 'business'),
+('2', 'Mae', '86 Willow Rd, New Milford, CT 06776', 'business'),
+('3', 'Paula', '455 Will Isaacs Rd, Zionville, NC 28698', 'business'),
+('4', 'Henry', '21140 Adams Cir, Lincoln, DE 19960', 'business'),
+('5', 'Heather','2450 Rs County Rd #4250, Point, TX 75472', 'business');
 
 
 insert into products (productID, name, inventoryAmount, price, type) values 
@@ -97,7 +102,12 @@ insert into products (productID, name, inventoryAmount, price, type) values
 ('13', 'flatware', 23, 9.98, 'kitchen'),
 ('14', 'pajama', 34, 63.33, 'clothes'),
 ('15', 'table', 5, 129, 'home'),
-('16', 'americano', 100, 3.99 ,'food');
+('16', 'americano', 100, 3.99 ,'food'),
+('6', 'vacuum', 15, 499.00, 'home'),
+('7', 'TV', 3, 999.00, 'electronics'),
+('8', 'caviar', 50, 199.00, 'food'),
+('9', 'mattress', 2, 1099.00, 'home'),
+('10', 'bath tissue', 100, 23.99, 'home');
 
 
 insert into region (regionID, regionName, RegionManager) values 
