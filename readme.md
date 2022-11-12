@@ -5,8 +5,20 @@ run 2710_Project.sql --> insert_data.sql
 
 cd to your folder
 
-export FLASK_ENV=development
+python3 -m venv (folder)
 
-export FLASK_APP=config.py
+source (folder)/bin/activate
 
-flask run
+  pip3 freeze- see what you installed 
+
+  pip3 install flask
+
+  export FLASK_ENV=development
+
+  export FLASK_APP=config.py
+
+  flask run
+
+  control + c
+
+deactivate
