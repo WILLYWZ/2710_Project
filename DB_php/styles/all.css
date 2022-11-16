@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+
+  font-family: 'Helvetica', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav td{
+  text-align: left;
+}
+#logo {
+  font-size: 25px;
+font-weight: lighter;
+}
+.nav a {
+  text-decoration: none;
+  color: rgb(42, 36, 75);
+  padding: 10px;
+}
+#submitlink {
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+select {
+  font-size: 1em;
+}
+#main input {
+  width: 500px;
+  height: 20px;
+  margin-left: 2%;
+}
+form {
+  margin-bottom: 20px;
+}
+.nav {
+  border-spacing: 0;
+  margin: 0% 0% 1% 0;
+  width: 100%;
+  line-height: 3.5em;
+  background-image: linear-gradient(to right, rgba(241, 237, 168, 0.7), rgba(246, 245, 238, 0.7));
+}
+#main {
+  margin-left: 10%;
+  width: 80%;
+  margin-top: 2%;
+  font-weight: lighter;
+  line-height: 2.5em;
+}
+#products {
+  width: 100%;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+#products td {
+  width: 22.5%;
+}
+#products a {
+  color: black;
+}
+
+footer {
+  text-align: center;
+  padding: 1%;
+}
+#add {
+  margin-left: 40%;
+  margin-top: 2%;
+}
+button {
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(51, 27, 78);
+  padding: 10px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2) inset;
+}
+#submit {
+  margin-left: 25%;
+  background-color: rgba(218, 218, 218, 0.7);
+  line-height: 3em;
+  width: 50%;
+  padding: 1%;
+  border-radius: 10px;
+    font-weight: lighter;
+  margin-top: 3%;
+}
+h2 {
+  text-align: center;
+  margin: 1%;
+}
+#submit input {
+  border-radius: 5px;
+  border: none;
+  width: 20%;
+  height: 20px;
+  margin: 15px;
+}
