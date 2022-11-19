@@ -1,5 +1,6 @@
-<?php include("includes/init.php");
-$title = "Home";
+<?php 
+include("includes/init.php");
+$title = "products";
 $db = open_sqlite_db("data/Products.sqlite");
 $messages = array();
 
@@ -78,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
 
-  // insert valid product info into database
+  // Insert valid product info into database
   if ($valid_review) {
     $sql = "INSERT INTO Products (ProductID, ProductName, InventoryAmount, ProductPrice, ProductType) VALUES (:ProductID, :ProductName, :InventoryAmount, :ProductPrice, :ProductType)";
     $params = array(
@@ -115,6 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <?php include("includes/header.php"); ?>
+  <div class="sidebar">
+    <a href="home.php">Home</a>
+    <a class="active" href="products.php">Products</a>
+    <a href="customers.php">Customers</a>
+    <a href="transactions.php">Transactions</a>
+    <a href="region.php">Region</a>
+    <a href="store.php">Store</a>
+    <a href="salespersons.php">Salespersons</a>
+  </div>
+
   <div id="main">
     <?php
     // Write out any messages to the user.
@@ -123,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <form id="searchForm" action="index.php" method="get" novalidate>
+    <form id="searchForm" action="products.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
@@ -197,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div id="submit">
     <h2>Add New Product</h2>
 
-    <form action="index.php" method="post" novalidate>
+    <form action="products.php" method="post" novalidate>
 
       <div>
         <label>Product ID:</label>
