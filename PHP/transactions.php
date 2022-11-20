@@ -17,7 +17,7 @@
             <td><?php echo htmlspecialchars($record["orderNumber"]); ?></td>
             <td><?php echo htmlspecialchars($record["date"]); ?></td>
             <td><?php echo htmlspecialchars($record["SalespersonName"]); ?></td>
-            <td><?php echo htmlspecialchars($record["productID"]); ?></td>
+            <td><?php echo htmlspecialchars($record["ProductID"]); ?></td>
             <td><?php echo htmlspecialchars($record["price"]); ?></td>
             <td><?php echo htmlspecialchars($record["quantity"]); ?></td>
             <td><?php echo htmlspecialchars($record["customerID"]); ?></td>
@@ -30,7 +30,7 @@
         "transactionID" => "By transactionID",
         "date" => "By Date",
         "SalespersonName" => "By Salesperson",
-        "productID" => "By productID",
+        "ProductID" => "By ProductID",
         "price" => "By Price",
         "customerID" => "By customerID",
     ];
@@ -287,6 +287,7 @@
                                     <th>transactionID</th>
                                     <th>orderNumber</th>
                                     <th>date</th>
+                                    <th>Salesperson</th>
                                     <th>productID</th>
                                     <th>price</th>
                                     <th>quantity</th>
