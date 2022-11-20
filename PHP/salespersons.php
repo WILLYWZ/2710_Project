@@ -1,7 +1,7 @@
 <?php 
 include("includes/init.php");
 $title = "salespersons";
-$db = open_sqlite_db("data/Products.sqlite");
+$db = open_sqlite_db("data/project.sqlite");
 $messages = array();
 
 function loop($values)
