@@ -53,33 +53,57 @@ if (isset($_GET['search'])) {
   $search = NULL;
 }
 
-
-
-// Insert Form
+// get list of products
 $productids = exec_sql_query($db, "SELECT ProductID FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $productnames = exec_sql_query($db, "SELECT ProductName FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $inventoryamounts = exec_sql_query($db, "SELECT InventoryAmount FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $productprices = exec_sql_query($db, "SELECT ProductPrice FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  $productid = $_POST['productid'];
+  $productname = $_POST['productname'];
+  $inventoryamount = $_POST['inventoryamount'];
+  $productprice = $_POST['productprice'];
+  $producttype = $_POST['producttype'];
+
   $valid_review = TRUE;
 
-  $productid = filter_input(INPUT_POST, 'ProductID', FILTER_SANITIZE_STRING);
-  $productname = filter_input(INPUT_POST, 'ProductName', FILTER_SANITIZE_STRING);
-  $inventoryamount = filter_input(INPUT_POST, 'InventoryAmount', FILTER_SANITIZE_STRING);
-  $productprice = filter_input(INPUT_POST, 'ProductPrice', FILTER_SANITIZE_STRING);
-  $producttype = filter_input(INPUT_POST, 'ProductType', FILTER_SANITIZE_STRING);
-
-
-  if ($inventoryamount < 0) {
+  if (!in_array($productid, $productids)) {
+    $valid_review = TRUE;
+  } else {
     $valid_review = FALSE;
-  }
-  if (in_array($productid, $productids)) {
-    $valid_review = FALSE;
+    array_push($messages, "Product ID already exists!");
   }
 
+  if ($productid == NULL) {
+    $valid_review = FALSE;
+    array_push($messages, "Product ID could not be empty!");
+  }
 
-  // Insert valid product info into database
+  if ($productname == NULL) {
+    $valid_review = FALSE;
+    array_push($messages, "Product Name could not be empty!");
+  }
+
+  if ($inventoryamount == NULL || $inventoryamount < 0) {
+    $valid_review = FALSE;
+    array_push($messages, "Inventory amount should be greater than 0!");
+  }
+
+  if ($productprice == NULL || $productprice < 0) {
+    $valid_review = FALSE;
+    array_push($messages, "Product Price should be greater than 0!");
+  }
+
+  if ($producttype == NULL) {
+    $valid_review = FALSE;
+    array_push($messages, "Product Type could not be empty!");
+  }
+
+
   if ($valid_review) {
     $sql = "INSERT INTO Products (ProductID, ProductName, InventoryAmount, ProductPrice, ProductType) VALUES (:ProductID, :ProductName, :InventoryAmount, :ProductPrice, :ProductType)";
     $params = array(
@@ -89,14 +113,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ':ProductPrice' => $productprice,
       ':ProductType' => $producttype,
     );
+    // Insert valid product info into database
     $result = exec_sql_query($db, $sql, $params);
     if ($result) {
-      array_push($messages, "Product has been added to the database");
-    } else {
-      array_push($messages, "Failed to add Product.");
+      unset($messages);
+      $messages = array();
+      array_push($messages, "Entry Successfully Added");
     }
-  } else {
-    array_push($messages, "Failed to add Product. All fields are required. Product ID must be unique");
+    else {
+      unset($messages);
+      $messages = array();
+      array_push($messages, "Could Not Add Entry");
+    }
   }
 }
 ?>
@@ -222,12 +250,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div>
         <label>Inventory Amount: </label>
-        <input type="integer" name="inventoryamount" />
+        <input type="number" name="inventoryamount" />
       </div>
 
       <div>
         <label>Product Price </label>
-        <input type="numeric" name="productprice" />
+        <input type="text" name="productprice" />
       </div>
 
       <div>
@@ -237,9 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       <div>
-        <span>
-          <!-- empty element; used to align submit button --></span>
-        <button id="add" type="submit">Add Product</button>
+        <button id="add" type="submit" value="submit">Add Product</button>
       </div>
     </form>
   </div>
