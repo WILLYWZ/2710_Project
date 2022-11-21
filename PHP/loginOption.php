@@ -1,7 +1,6 @@
 <?php 
 include("includes/init.php");
 $title = "home";
-// This is the page for user to login to the system
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +21,17 @@ $title = "home";
 
 <body>
   <?php include("includes/headerHome.php"); ?>
+    <div id="submit">
+      <a href="customerLogin.php">Login as Customer</a>
+    </div>
 
-  <div class="sidebar">
-    <a class="active" href="home.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
-  </div>
+    <div id="submit">
+      <a href="sellerLogin.php">Login as Merchant</a>
+    </div>
 
+    <div id="submit">
+      <a href="guest.php">Continue As Guest</a>
+    </div>
 
   <?php include("includes/footer.php"); ?>
 

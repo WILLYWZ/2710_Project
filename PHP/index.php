@@ -1,6 +1,7 @@
 <?php 
 include("includes/init.php");
 $title = "home";
+// This is the home page for logged-in Merchant
 ?>
 
 <!DOCTYPE html>

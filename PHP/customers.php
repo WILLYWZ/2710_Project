@@ -51,7 +51,12 @@
         $search = NULL;
     }
 
+    // get list of products
     $customerids = exec_sql_query($db, "SELECT customerID FROM Customers", NULL)->fetchAll(PDO::FETCH_COLUMN);
+    $customernames = exec_sql_query($db, "SELECT name FROM Customers", NULL)->fetchAll(PDO::FETCH_COLUMN);
+    $customeraddress = exec_sql_query($db, "SELECT address FROM Customers", NULL)->fetchAll(PDO::FETCH_COLUMN);
+    $customertype = exec_sql_query($db, "SELECT kind FROM Customers", NULL)->fetchAll(PDO::FETCH_COLUMN);
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -180,11 +185,11 @@
                     <?php
                         if ($search_field == "All") {
                             // Search across all fields
-                            $sql = "SELECT customerID, name, address, kind FROM Customers ";
+                            $sql = "SELECT * FROM Customers ";
                             $params = array();
                         } else {
                             // Search across the specified field
-                            $sql = "SELECT customerID, name, address, kind FROM Customers WHERE ($search_field == :search )";
+                            $sql = "SELECT * FROM Customers WHERE ($search_field == :search )";
                             $params = array(
                             ':search' => $search
                             );
@@ -193,7 +198,7 @@
                     ?>
                     <h2>Customers List</h2>
                     <?php
-                        $sql = "SELECT customerID, name, address, kind FROM Customers";
+                        $sql = "SELECT * FROM Customers";
                         $params = array();
                 }
 

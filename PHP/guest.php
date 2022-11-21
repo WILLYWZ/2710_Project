@@ -21,16 +21,11 @@ $title = "home";
 </div>
 
 <body>
-  <?php include("includes/headerHome.php"); ?>
+  <?php include("includes/headerGuest.php"); ?>
 
   <div class="sidebar">
-    <a class="active" href="home.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
+    <a class="active" href="guest.php">Home</a>
+    <a href="productsGuest.php">Products</a>
   </div>
 
 
