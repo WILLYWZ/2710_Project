@@ -185,11 +185,11 @@
                     <?php
                         if ($search_field == "All") {
                             // Search across all fields
-                            $sql = "SELECT * FROM Customers ";
+                            $sql = "SELECT customerID, name, address, kind FROM Customers ";
                             $params = array();
                         } else {
                             // Search across the specified field
-                            $sql = "SELECT * FROM Customers WHERE ($search_field == :search )";
+                            $sql = "SELECT customerID, name, address, kind FROM Customers WHERE ($search_field == :search )";
                             $params = array(
                             ':search' => $search
                             );
@@ -198,7 +198,7 @@
                     ?>
                     <h2>Customers List</h2>
                     <?php
-                        $sql = "SELECT * FROM Customers";
+                        $sql = "SELECT customerID, name, address, kind FROM Customers";
                         $params = array();
                 }
 

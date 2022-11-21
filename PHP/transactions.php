@@ -21,6 +21,7 @@
             <td><?php echo htmlspecialchars($record["price"]); ?></td>
             <td><?php echo htmlspecialchars($record["quantity"]); ?></td>
             <td><?php echo htmlspecialchars($record["customerID"]); ?></td>
+            <td><?php echo htmlspecialchars($record["regionID"]); ?></td>
         </tr>
         <?php
     }
@@ -31,8 +32,9 @@
         "date" => "By Date",
         "SalespersonName" => "By Salesperson",
         "ProductID" => "By ProductID",
-        "price" => "By Price",
+        "price" => "Price Under",
         "customerID" => "By customerID",
+        "regionID" => "By regionID",
     ];
 
     if (isset($_GET['search'])) {
@@ -75,6 +77,7 @@
         $price = $_POST['price'];
         $quantity = $_POST['quantity'];
         $customerid = $_POST['customerID'];
+        $regionid = $_POST['regionID'];
 
         $valid_review = TRUE;
 
@@ -147,12 +150,17 @@
             array_push($messages, "Customer ID could not be empty!");
         }
 
+        if ($regionid == NULL) {
+            $valid_review = FALSE;
+            array_push($messages, "Region ID could not be empty!");
+        }
+
 
 
         if ($valid_review) {
             $sql = "INSERT INTO Transactions 
-                    (transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID) 
-                    VALUES (:transactionID, :orderNumber, :date, :SalespersonName, :productID, :price, :quantity, :customerID)";
+                    (transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID, regionID) 
+                    VALUES (:transactionID, :orderNumber, :date, :SalespersonName, :productID, :price, :quantity, :customerID, :regionID)";
             $params = array(
             ':transactionID'=> $transactionid,
             ':orderNumber'=> $ordernumber,
@@ -162,6 +170,7 @@
             ':price'=> $price,
             ':quantity'=> $quantity,
             ':customerID'=> $customerid,
+            ':regionID'=> $customerid,
             );
 
             // Insert valid product info into database
@@ -248,7 +257,13 @@
                             // Search across all fields
                             $sql = "SELECT * FROM transactions ";
                             $params = array();
-                        } else {
+                        } else if ($search_field == "price"){
+                            // Search across the specified field
+                            $sql = "SELECT * FROM transactions WHERE ($search_field <= :search )";
+                            $params = array(
+                            ':search' => $search
+                            );
+                        }else {
                             // Search across the specified field
                             $sql = "SELECT * FROM transactions WHERE ($search_field == :search )";
                             $params = array(
@@ -280,6 +295,7 @@
                                     <th>price</th>
                                     <th>quantity</th>
                                     <th>customerID</th>
+                                    <th>regionID</th>
                                 </tr>
 
                                 <?php
@@ -340,8 +356,13 @@
                 </div>
 
                 <div>
-                    <label>customer ID: </label>
+                    <label>Customer ID: </label>
                     <input type="text" name="customerID" />
+                </div>
+
+                <div>
+                    <label>Region ID: </label>
+                    <input type="text" name="regionID" />
                 </div>
                 <div>
                     <button id="add" type="submit" value="submit">Add Transaction</button>
