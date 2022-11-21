@@ -56,12 +56,12 @@ if (isset($_GET['search'])) {
 }
 
 // get list of products
-$name = exec_sql_query($db, "SELECT name FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$address = exec_sql_query($db, "SELECT address FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$email = exec_sql_query($db, "SELECT email FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$jobTitle = exec_sql_query($db, "SELECT jobTitle FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$storeAssigned = exec_sql_query($db, "SELECT storeAssigned FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$salary = exec_sql_query($db, "SELECT salary FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$names = exec_sql_query($db, "SELECT name FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$addresses = exec_sql_query($db, "SELECT address FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$emails = exec_sql_query($db, "SELECT email FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$jobTitles = exec_sql_query($db, "SELECT jobTitle FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$storeAssigneds = exec_sql_query($db, "SELECT storeAssigned FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$salarys = exec_sql_query($db, "SELECT salary FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -69,13 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $name = $_POST['name'];
   $address = $_POST['address'];
   $email = $_POST['email'];
-  $jobtitle = $_POST['jobTitle'];
+  $jobTitle = $_POST['jobTitle'];
   $storeAssigned = $_POST['storeAssigned'];
   $salary = $_POST['salary'];
 
   $valid_review = TRUE;
 
-  if (!in_array($name, $name)) {
+  if (!in_array($name, $names)) {
     $valid_review = TRUE;
   } else {
     $valid_review = FALSE;

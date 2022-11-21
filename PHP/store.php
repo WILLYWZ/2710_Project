@@ -55,11 +55,11 @@ if (isset($_GET['search'])) {
 }
 
 // get list of products
-$storeID = exec_sql_query($db, "SELECT storeID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$address = exec_sql_query($db, "SELECT address FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$manager = exec_sql_query($db, "SELECT manager FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$salesHeadCount = exec_sql_query($db, "SELECT salesHeadCount FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$regionID = exec_sql_query($db, "SELECT regionID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$storeIDs = exec_sql_query($db, "SELECT storeID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$addresses = exec_sql_query($db, "SELECT address FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$managers = exec_sql_query($db, "SELECT manager FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$salesHeadCounts = exec_sql_query($db, "SELECT salesHeadCount FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$regionIDs = exec_sql_query($db, "SELECT regionID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $valid_review = TRUE;
 
-  if (!in_array($storeID, $storeID)) {
+  if (!in_array($storeID, $storeIDs)) {
     $valid_review = TRUE;
   } else {
     $valid_review = FALSE;
