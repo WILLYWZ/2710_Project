@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div>
         <label>SalesHeadCount </label>
-        <input type="text" name="salesHeadCount" />
+        <input type="number" name="salesHeadCount" />
       </div>
 
       <div>
