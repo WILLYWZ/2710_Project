@@ -66,15 +66,15 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $transactionid = $_POST['transactionid'];
-        $ordernumber = $_POST['ordernumber'];
+        $transactionid = $_POST['transactionID'];
+        $ordernumber = $_POST['orderNumber'];
         $date = $_POST['date'];
-        $salespersonname = $_POST['salespersonname'];
+        $salespersonname = $_POST['SalespersonName'];
 
-        $productid = $_POST['productid'];
+        $productid = $_POST['productID'];
         $price = $_POST['price'];
         $quantity = $_POST['quantity'];
-        $customerid = $_POST['customerid'];
+        $customerid = $_POST['customerID'];
 
         $valid_review = TRUE;
 
@@ -100,7 +100,7 @@
             array_push($messages, "Order Number exists!");
         }
 
-        if ($orderNumber == NULL) {
+        if ($ordernumber == NULL) {
             $valid_review = FALSE;
             array_push($messages, "Order Number could not be empty!");
         }
@@ -114,20 +114,13 @@
 
 
         //Salesperson Name
-        if ($kind == NULL) {
+        if ($salespersonname == NULL) {
             $valid_review = FALSE;
             array_push($messages, "Salesperson Name could not be empty!");
         }
 
 
         //Product ID
-        if (!in_array($productid, $productids)) {
-            $valid_review = TRUE;
-        } else {
-            $valid_review = FALSE;
-            array_push($messages, "Product ID exists!");
-        }
-
         if ($productid == NULL) {
             $valid_review = FALSE;
             array_push($messages, "Product ID could not be empty!");
@@ -149,13 +142,6 @@
 
 
         //Customer ID
-        if (!in_array($customerid, $customerids)) {
-            $valid_review = TRUE;
-        } else {
-            $valid_review = FALSE;
-            array_push($messages, "Customer ID exists!");
-        }
-        
         if ($customerid == NULL) {
             $valid_review = FALSE;
             array_push($messages, "Customer ID could not be empty!");
@@ -170,6 +156,8 @@
             $params = array(
             ':transactionID'=> $transactionid,
             ':orderNumber'=> $ordernumber,
+            ':date'=> $date,
+            ':SalespersonName'=> $salespersonname,
             ':productID'=> $productid,
             ':price'=> $price,
             ':quantity'=> $quantity,
@@ -269,7 +257,7 @@
                         }
                 } else {
                     ?>
-                    <h2>Customers List</h2>
+                    <h2>Transactions</h2>
                     <?php
                         $sql = "SELECT * FROM transactions";
                         $params = array();
@@ -318,7 +306,7 @@
 
                 <div>
                     <label>transaction ID:</label>
-                    <input type="text" name="transactionid" />
+                    <input type="text" name="transactionID" />
                 </div>
 
                 <div>
