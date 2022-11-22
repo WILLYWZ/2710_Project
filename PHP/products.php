@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <?php include("includes/header.php"); ?>
   <div class="sidebar">
-    <a href="home.php">Home</a>
+    <a href="index.php">Home</a>
     <a class="active" href="products.php">Products</a>
     <a href="customers.php">Customers</a>
     <a href="transactions.php">Transactions</a>

@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "loginOption";
+$title = "salesAccount";
 ?>
 
 <!DOCTYPE html>
@@ -21,20 +21,12 @@ $title = "loginOption";
 
 <body>
   <?php include("includes/headerHome.php"); ?>
-    <div id="submit">
-      <a href="customerLogin.php" id="logo">Login as Customer</a>
-    </div>
 
-    <div id="submit">
-      <a href="salesLogin.php" id="logo">Login as Salesperson</a>
-    </div>
-
-    <div id="submit">
-      <a href="guest.php" id="logo">Continue As Guest</a>
-    </div>
 
   <?php include("includes/footer.php"); ?>
 
 </body>
 
 </html>
+
+

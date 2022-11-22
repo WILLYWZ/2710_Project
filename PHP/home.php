@@ -31,6 +31,8 @@ $title = "home";
     <a href="region.php">Region</a>
     <a href="store.php">Store</a>
     <a href="salespersons.php">Salespersons</a>
+    <a href="loginOption.php">LOG IN</a>
+    <a href="logout.php">LOG OUT</a>
   </div>
 
 

@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "home";
+$title = "index";
 // This is the home page for logged-in Merchant
 ?>
 
@@ -31,8 +31,9 @@ $title = "home";
     <a href="region.php">Region</a>
     <a href="store.php">Store</a>
     <a href="salespersons.php">Salespersons</a>
+    <a href="loginOption.php">LOG IN</a>
+    <a href="logout.php">LOG OUT</a>
   </div>
-
 
   <?php include("includes/footer.php"); ?>
 

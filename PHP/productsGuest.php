@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "products";
+$title = "productsGuest";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
 
@@ -75,10 +75,12 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
 </head>
 
 <body>
-  <?php include("includes/headerGuest.php"); ?>
+  <?php include("includes/headerHome.php"); ?>
   <div class="sidebar">
     <a href="guest.php">Home</a>
     <a class="active" href="productsGuest.php">Products</a>
+    <a href="loginOption.php">Back to Login</a>
+    <a href="createAccount.php">Register As New User</a>
   </div>
 
   <div id="main">

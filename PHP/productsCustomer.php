@@ -1,8 +1,13 @@
 <?php 
 include("includes/init.php");
-$title = "products";
+$title = "productsCustomer";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
+
+session_start();
+if ($_SESSION['logged_user_by_sql']) {
+  print($_SESSION['logged_user_by_sql']);
+}
 
 function loop($values)
 {
@@ -77,13 +82,8 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
 <body>
   <?php include("includes/headerCustomer.php"); ?>
   <div class="sidebar">
-    <a href="home.php">Home</a>
+    <a href="customerAccount.php">Home</a>
     <a class="active" href="productsCustomer.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
   </div>
 
   <div id="main">

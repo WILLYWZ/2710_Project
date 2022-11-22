@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "home";
+$title = "guest";
 // This is the page for user to login to the system
 ?>
 
@@ -21,11 +21,13 @@ $title = "home";
 </div>
 
 <body>
-  <?php include("includes/headerGuest.php"); ?>
+  <?php include("includes/headerHome.php"); ?>
 
   <div class="sidebar">
     <a class="active" href="guest.php">Home</a>
     <a href="productsGuest.php">Products</a>
+    <a href="loginOption.php">Back to Login</a>
+    <a href="createAccount.php">Register As New User</a>
   </div>
 
 
