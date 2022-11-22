@@ -76,6 +76,7 @@ $regionManager = exec_sql_query($db, "SELECT regionManager FROM Region", NULL)->
     <a href="products.php">Products</a>
     <a href="customers.php">Customers</a>
     <a href="transactions.php">Transactions</a>
+    <a href="order.php">Make a Order</a>
     <a class="active" href="region.php">Region</a>
     <a href="store.php">Store</a>
     <a href="salespersons.php">Salespersons</a>

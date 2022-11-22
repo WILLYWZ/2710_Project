@@ -59,8 +59,7 @@
     $salespersonnames = exec_sql_query($db, "SELECT SalespersonName FROM Transactions", NULL)->fetchAll(PDO::FETCH_COLUMN);
     $customerids = exec_sql_query($db, "SELECT customerID FROM Transactions", NULL)->fetchAll(PDO::FETCH_COLUMN);
     $regionids = exec_sql_query($db, "SELECT regionID FROM Transactions", NULL)->fetchAll(PDO::FETCH_COLUMN);
-    $stock = exec_sql_query($db, "SELECT InventoryAmount FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $transactionid = $_POST['transactionID'];
@@ -73,6 +72,9 @@
         $quantity = $_POST['quantity'];
         $customerid = $_POST['customerID'];
         $regionid = $_POST['regionID'];
+
+        $stock = exec_sql_query($db, "SELECT InventoryAmount FROM Products WHERE ProductID = '$productid'", NULL)->fetchAll(PDO::FETCH_COLUMN);
+
 
         $valid_review = TRUE;
 
@@ -135,14 +137,14 @@
         //Quantity
         if ($quantity == NULL) {
             $valid_review = FALSE;
-            array_push($messages, "Quatity could not be empty!");
+            array_push($messages, "Quantity could not be empty!");
         }
-
-        if ($quantity > $stock) {
+        if ($quantity > $stock[0]) {
             $valid_review = FALSE;
             array_push($messages, "Quatity could not be greater than stock!");
-            array_push($messages, "Currently $stock in stock");
+            array_push($messages, "{$productid} currently have {$stock[0]} in stock! ");
         }
+
 
         //Customer ID
         if ($customerid == NULL) {
@@ -157,13 +159,19 @@
 
 
         if ($valid_review) {
-            $sql = "INSERT INTO Products (ProductID, ProductName, InventoryAmount, ProductPrice, ProductType) VALUES (:ProductID, :ProductName, :InventoryAmount, :ProductPrice, :ProductType)";
+            $sql = "INSERT INTO Transactions 
+                    (transactionID, orderNumber, date, SalespersonName, productID, price, quantity, customerID, regionID) 
+                    VALUES (:transactionID, :orderNumber, :date, :SalespersonName, :productID, :price, :quantity, :customerID, :regionID)";
             $params = array(
-                ':ProductID' => $productid,
-                ':ProductName' => $productname,
-                ':InventoryAmount' => $inventoryamount,
-                ':ProductPrice' => $productprice,
-                ':ProductType' => $producttype,
+            ':transactionID'=> $transactionid,
+            ':orderNumber'=> $ordernumber,
+            ':date'=> $date,
+            ':SalespersonName'=> $salespersonname,
+            ':productID'=> $productid,
+            ':price'=> $price,
+            ':quantity'=> $quantity,
+            ':customerID'=> $customerid,
+            ':regionID'=> $regionid,
             );
 
             // Insert valid product info into database
@@ -199,7 +207,8 @@
         <?php include("includes/header.php"); ?>
         <div class="sidebar">
             <a href="home.php">Home</a>
-            <a class="active" href="products.php">Products</a>
+            <a href="products.php">Products</a>
+            <a class="active" href="order.php">Make a Order</a>
             <a href="customers.php">Customers</a>
             <a href="transactions.php">Transactions</a>
             <a href="region.php">Region</a>

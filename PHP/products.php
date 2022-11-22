@@ -149,6 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a class="active" href="products.php">Products</a>
     <a href="customers.php">Customers</a>
     <a href="transactions.php">Transactions</a>
+    <a href="order.php">Make a Order</a>
     <a href="region.php">Region</a>
     <a href="store.php">Store</a>
     <a href="salespersons.php">Salespersons</a>

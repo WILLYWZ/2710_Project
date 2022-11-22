@@ -170,7 +170,7 @@
             ':price'=> $price,
             ':quantity'=> $quantity,
             ':customerID'=> $customerid,
-            ':regionID'=> $customerid,
+            ':regionID'=> $regionid,
             );
 
             // Insert valid product info into database
@@ -316,7 +316,7 @@
 
         <div id="submit">
             
-            <h2>Add New Customers</h2>
+            <h2>Add New Transaction</h2>
 
             <form action="transactions.php" method="post" novalidate>
 
