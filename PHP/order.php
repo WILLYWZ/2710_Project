@@ -186,6 +186,10 @@
                 $messages = array();
                 array_push($messages, "Could Not Add Entry");
             }
+
+            $newStock = $stock[0] - $quantity;
+            $stock = exec_sql_query($db, "UPDATE Products SET InventoryAmount = '$newStock'
+                                            WHERE ProductID = '$productid'", NULL)->fetchAll(PDO::FETCH_COLUMN);
         }
     }
 ?>
