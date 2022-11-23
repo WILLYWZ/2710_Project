@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "store";
+$title = "guestStore";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
 
@@ -147,15 +147,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <?php include("includes/header.php"); ?>
+
   <div class="sidebar">
-    <a href="home.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="order.php">Make a Order</a>
-    <a href="region.php">Region</a>
-    <a class="active" href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
+    <a href="index.php">Home</a>
+    <a href="guestProducts.php">Products</a>
+    <a class="active" href="guestStore.php">Store Locations</a>
+    <a href="loginOption.php">Back to Login</a>
+    <a href="createAccount.php">Register As New User</a>
   </div>
 
   <div id="main">
@@ -166,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <form id="searchForm" action="store.php" method="get" novalidate>
+    <form id="searchForm" action="guestStore.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
@@ -236,42 +234,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
     }
     ?>
-  </div>
-  <div id="submit">
-    <h2>Add New Store</h2>
-
-    <form action="store.php" method="post" novalidate>
-
-      <div>
-        <label>StoreID</label>
-        <input type="text" name="storeID" />
-      </div>
-
-      <div>
-        <label>Address</label>
-        <input type="text" name="address" />
-      </div>
-
-      <div>
-        <label>Manager </label>
-        <input type="text" name="manager" />
-      </div>
-
-      <div>
-        <label>SalesHeadCount </label>
-        <input type="number" name="salesHeadCount" />
-      </div>
-
-      <div>
-        <label>RegionID </label>
-        <input type="text" name="regionID" />
-      </div>
-      
-
-      <div>
-        <button id="add" type="submit" value="submit">Add Store</button>
-      </div>
-    </form>
   </div>
 
   <?php include("includes/footer.php"); ?>

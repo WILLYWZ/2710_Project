@@ -1,41 +1,31 @@
 <?php 
 include("includes/init.php");
-$title = "customerInfo";
+$title = "home";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
-// This is the home page for logged-in Customer
+// This is the page for user to login to the system
 session_start();
 
-//print customer ID
+//print seller ID
 $session_id = $_SESSION['logged_user_by_sql'];
 if ($_SESSION['logged_user_by_sql']) {
-    print($_SESSION['logged_user_by_sql']);
+  print($_SESSION['logged_user_by_sql']);
 }
 
-function print_orderRecord($record)
+function print_salesRecord($record)
 {
 ?>
   <tr>
-    <td><?php echo htmlspecialchars($record["orderNumber"]); ?></td>
+    <td><?php echo htmlspecialchars($record["transactionID"]); ?></td>
     <td><?php echo htmlspecialchars($record["date"]); ?></td>
     <td><?php echo htmlspecialchars($record["ProductID"]); ?></td>
     <td><?php echo htmlspecialchars($record["price"]); ?></td>
     <td><?php echo htmlspecialchars($record["quantity"]); ?></td>
-  </tr>
-<?php
-}
-
-function print_priceAndQuality($record)
-{
-?>
-  <tr>
-    <td><?php echo htmlspecialchars($record["price"]); ?></td>
-    <td><?php echo htmlspecialchars($record["quantity"]); ?></td>
+    <td><?php echo htmlspecialchars($record["customerID"]); ?></td>
   </tr>
 <?php
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,30 +33,55 @@ function print_priceAndQuality($record)
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>E-Commerce Database</title>
   <link rel="stylesheet" href="styles/all.css">
 </head>
 
-<div class="content"></div>
+<!-- Page content -->
+<div class="content">
+
+</div>
 
 <body>
-  <?php include("includes/headerCustomer.php"); ?>
+  <?php include("includes/headerSales.php"); ?>
 
   <div class="sidebar">
-    <a href="customerInfo.php">Account</a>
-    <a class="active" href="customerPurchaseHistory.php">Purchase History</a>
-    <a href="customerProducts.php">Products Gallery</a>
-    <a href="customerStore.php">Check Our Locations</a>
+    <a class="active" href="salesHome.php">Home</a>
+    <a href="salesProducts.php">Products</a>
+    <a href="salesCustomers.php">Customers</a>
+    <a href="salesTransactions.php">Transactions</a>
+    <a href="salesOrder.php">Make a Order</a>
+    <a href="salesRegion.php">Region</a>
+    <a href="salesStore.php">Store</a>
+    <a href="salesSalespersons.php">Salespersons</a>
+    <a href="salesDataAggregation.php">Data Aggregation</a>
   </div>
 
+
   <div>
-    <h3>Order Total</h3>
+    <h3>Sales Summary</h3>
   </div>
 
   <div id="main1">
     <?php
     //print($session_id);
-    $sql1 = " SELECT price, quantity FROM Transactions WHERE customerID == '$session_id' ";
+    $sql_salesName = "SELECT name FROM Salespersons WHERE email = '$session_id' ";
+    $result_name = exec_sql_query($db, $sql_salesName, NULL);
+    //print(count($records_name));
+    if ($result_name){
+      $records_names = $result_name->fetchAll();
+      if (count($records_names) > 0){
+        foreach ($records_names as $record_name){
+          //print($record_name['name']);
+        }
+      }
+    }
+    
+    $salesName = $record_name['name'];
+    //print($salesName);
+
+    $sql1 = " SELECT price, quantity FROM Transactions WHERE SalespersonName == '$salesName' ";
     $results1 = exec_sql_query($db, $sql1, NULL);
     if ($results1) {
       $records1 = $results1->fetchAll();
@@ -89,9 +104,8 @@ function print_priceAndQuality($record)
     }
     ?>
 
-
-  <div>
-    <h3>Purchase History</h3>
+<div>
+    <h3>Sales History</h3>
   </div>
 
   <div id="main">
@@ -103,7 +117,7 @@ function print_priceAndQuality($record)
     ?>
     <?php
     //print($session_id);
-    $sql = " SELECT orderNumber, date, ProductID, price, quantity FROM Transactions WHERE customerID == '$session_id' ";
+    $sql = " SELECT transactionID, date, ProductID, price, quantity, customerID FROM Transactions WHERE SalespersonName == '$salesName' ";
     $results = exec_sql_query($db, $sql, NULL);
     if ($results) {
       $records = $results->fetchAll();
@@ -112,15 +126,16 @@ function print_priceAndQuality($record)
 
       <table id = "products">
           <tr>
-            <th>Order Number</th>
+            <th>Transaction ID</th>
             <th>Date</th>
             <th>Product ID</th>
             <th>Price</th>
             <th>Quality</th>
+            <th>Customer</th>
           </tr>
           <?php
           foreach ($records as $record) {
-            print_orderRecord($record);
+            print_salesRecord($record);
           }
           ?>
         </table>
@@ -130,7 +145,7 @@ function print_priceAndQuality($record)
       }
     }
     ?>
-  
+
 
   <?php include("includes/footer.php"); ?>
 

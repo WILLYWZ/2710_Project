@@ -20,7 +20,7 @@ $title = "salesAccount";
 </div>
 
 <body>
-  <?php include("includes/headerHome.php"); ?>
+  <?php include("includes/headerSales.php"); ?>
 
 
   <?php include("includes/footer.php"); ?>

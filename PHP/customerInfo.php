@@ -66,10 +66,9 @@ function print_customerKind($record)
   <?php include("includes/headerCustomer.php"); ?>
 
   <div class="sidebar">
-    <a href="customerAccount.php">Home</a>
     <a class="active" href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
-    <a href="productsCustomer.php">Products Gallery</a>
+    <a href="customerProducts.php">Products Gallery</a>
     <a href="customerStore.php">Check Our Locations</a>
   </div>
   

@@ -20,7 +20,7 @@ $title = "loginOption";
 </div>
 
 <body>
-  <?php include("includes/headerHome.php"); ?>
+  <?php include("includes/header.php"); ?>
     <div id="submit">
       <a href="customerLogin.php" id="logo">Login as Customer</a>
     </div>
@@ -30,7 +30,7 @@ $title = "loginOption";
     </div>
 
     <div id="submit">
-      <a href="guest.php" id="logo">Continue As Guest</a>
+      <a href="index.php" id="logo">Continue As Guest</a>
     </div>
 
   <?php include("includes/footer.php"); ?>

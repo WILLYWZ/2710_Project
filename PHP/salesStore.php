@@ -1,8 +1,16 @@
 <?php 
 include("includes/init.php");
-$title = "salespersons";
+$title = "store";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
+
+//login session
+session_start();
+
+//print seller ID
+if ($_SESSION['logged_user_by_sql']) {
+    print($_SESSION['logged_user_by_sql']);
+}
 
 function loop($values)
 {
@@ -14,24 +22,23 @@ function print_record($record)
 {
 ?>
   <tr>
-    <td><?php echo htmlspecialchars($record["name"]); ?></td>
+    <td><?php echo htmlspecialchars($record["storeID"]); ?></td>
     <td><?php echo htmlspecialchars($record["address"]); ?></td>
-    <td><?php echo htmlspecialchars($record["email"]); ?></td>
-    <td><?php echo htmlspecialchars($record["jobTitle"]); ?></td>
-    <td><?php echo htmlspecialchars($record["storeAssigned"]); ?></td>
-    <td><?php echo htmlspecialchars($record["salary"]); ?></td>
+    <td><?php echo htmlspecialchars($record["manager"]); ?></td>
+    <td><?php echo htmlspecialchars($record["salesHeadCount"]); ?></td>
+    <td><?php echo htmlspecialchars($record["regionID"]); ?></td>
   </tr>
 <?php
 }
 
+//Search drop down menu
 const SEARCH_FIELDS = [
   "all" => "Select Search Category",
-  "name" => "By Name",
+  "storeID" => "By storeID",
   "address" => "By Address",
-  "email" => "By Email",
-  "jobTitle" => "By Job Title",
-  "storeAssigned" => "By Store Assigned",
-  "salary" => "By Salary"
+  "manager" => "By manager",
+  "salesHeadCount" => "By salesHeadCount",
+  "regionID" => "By regionID",
 ];
 
 if (isset($_GET['search'])) {
@@ -56,35 +63,33 @@ if (isset($_GET['search'])) {
 }
 
 // get list of products
-$names = exec_sql_query($db, "SELECT name FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$addresses = exec_sql_query($db, "SELECT address FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$emails = exec_sql_query($db, "SELECT email FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$jobTitles = exec_sql_query($db, "SELECT jobTitle FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$storeAssigneds = exec_sql_query($db, "SELECT storeAssigned FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$salarys = exec_sql_query($db, "SELECT salary FROM Salespersons", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$storeIDs = exec_sql_query($db, "SELECT storeID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$addresses = exec_sql_query($db, "SELECT address FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$managers = exec_sql_query($db, "SELECT manager FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$salesHeadCounts = exec_sql_query($db, "SELECT salesHeadCount FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$regionIDs = exec_sql_query($db, "SELECT regionID FROM Store", NULL)->fetchAll(PDO::FETCH_COLUMN);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  $name = $_POST['name'];
+  $storeID = $_POST['storeID'];
   $address = $_POST['address'];
-  $email = $_POST['email'];
-  $jobTitle = $_POST['jobTitle'];
-  $storeAssigned = $_POST['storeAssigned'];
-  $salary = $_POST['salary'];
+  $manager = $_POST['manager'];
+  $salesHeadCount = $_POST['salesHeadCount'];
+  $regionID = $_POST['regionID'];
 
   $valid_review = TRUE;
 
-  if (!in_array($name, $names)) {
+  if (!in_array($storeID, $storeIDs)) {
     $valid_review = TRUE;
   } else {
     $valid_review = FALSE;
-    array_push($messages, "name already exists!");
+    array_push($messages, "storeID already exists!");
   }
 
-  if ($name == NULL) {
+  if ($storeID == NULL) {
     $valid_review = FALSE;
-    array_push($messages, "name could not be empty!");
+    array_push($messages, "storeID could not be empty!");
   }
 
   if ($address == NULL) {
@@ -92,36 +97,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     array_push($messages, "address could not be empty!");
   }
 
-  if ($email == NULL) {
+  if ($manager == NULL) {
     $valid_review = FALSE;
-    array_push($messages, "email could not be empty!");
+    array_push($messages, "manager could not be empty!");
   }
 
-  if ($jobTitle == NULL) {
+  if ($salesHeadCount == NULL || $salesHeadCount < 0) {
     $valid_review = FALSE;
-    array_push($messages, "jobTitle could not be empty!");
+    array_push($messages, "salesHeadCount should be greater than 0!");
   }
 
-  if ($storeAssigned == NULL) {
+  if ($regionID == NULL) {
     $valid_review = FALSE;
-    array_push($messages, "storeAssigned could not be empty!");
+    array_push($messages, "regionID could not be empty!");
   }
 
-  if ($salary == NULL || $salary < 0) {
-    $valid_review = FALSE;
-    array_push($messages, "salary should be greater than 0!");
-  }
+
 
 
   if ($valid_review) {
-    $sql = "INSERT INTO Salespersons (name, address, email, jobTitle, storeAssigned, salary) VALUES (:name, :address, :email, :jobTitle, :storeAssigned, :salary)";
+    $sql = "INSERT INTO Store (storeID, address, manager, salesHeadCount, regionID) VALUES (:storeID, :address, :manager, :salesHeadCount, :regionID)";
     $params = array(
-      ':name' => $name,
+      ':storeID' => $storeID,
       ':address' => $address,
-      ':email' => $email,
-      ':jobTitle' => $jobTitle,
-      ':storeAssigned' => $storeAssigned,
-      ':salary' => $salary,
+      ':manager' => $manager,
+      ':salesHeadCount' => $salesHeadCount,
+      ':regionID' => $regionID,
     );
     // Insert valid product info into database
     $result = exec_sql_query($db, $sql, $params);
@@ -153,15 +154,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-  <?php include("includes/header.php"); ?>
+  <?php include("includes/headerSales.php"); ?>
   <div class="sidebar">
-    <a href="home.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a class="active" href="salespersons.php">Salespersons</a>
+    <a href="salesHome.php">Home</a>
+    <a href="salesProducts.php">Products</a>
+    <a href="salesCustomers.php">Customers</a>
+    <a href="salesTransactions.php">Transactions</a>
+    <a href="salesOrder.php">Make a Order</a>
+    <a href="salesRegion.php">Region</a>
+    <a class="active" href="salesStore.php">Store</a>
+    <a href="salesSalespersons.php">Salespersons</a>
+    <a href="salesDataAggregation.php">Data Aggregation</a>
   </div>
 
   <div id="main">
@@ -172,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <form id="searchForm" action="salespersons.php" method="get" novalidate>
+    <form id="searchForm" action="salesStore.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
@@ -191,27 +194,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php
       if ($search_field == "all") {
         // Search across all fields
-        $sql = "SELECT * FROM Salespersons WHERE (name LIKE '%' || :search || '%') 
+        $sql = "SELECT * FROM Store WHERE (storeID LIKE '%' || :search || '%') 
                                           OR (address LIKE '%' || :search || '%') 
-                                          OR (email LIKE '%' || :search || '%') 
-                                          OR (jobTitle LIKE '%' || :search || '%')
-                                          OR (storeAssigned LIKE '%' || :search || '%') ;
-                                          OR (salary LIKE '%' || :search || '%') ";
+                                          OR (manager LIKE '%' || :search || '%') 
+                                          OR (salesHeadCount LIKE '%' || :search || '%')
+                                          OR (regionID LIKE '%' || :search || '%') ";
         $params = array(
           ':search' => $search
         );
       } else {
         // Search across the specified field
-        $sql = "SELECT * FROM Salespersons WHERE ($search_field LIKE '%' || :search || '%')";
+        $sql = "SELECT * FROM Store WHERE ($search_field LIKE '%' || :search || '%')";
         $params = array(
           ':search' => $search
         );
       }
     } else {
       ?>
-      <h2>Salespersons</h2>
+      <h2>Store</h2>
       <?php
-      $sql = "SELECT * FROM Salespersons";
+      $sql = "SELECT * FROM Store";
       $params = array();
     }
 
@@ -221,14 +223,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       if (count($records) > 0) {
       ?>
-        <table id = "salespersons">
+        <table id = "store">
           <tr>
-            <th>Name</th>
+            <th>StoreID</th>
             <th>Address</th>
-            <th>Email</th>
-            <th>Job title</th>
-            <th>Store Assigned</th>
-            <th>Salary</th>
+            <th>Manager</th>
+            <th>SalesHeadCount</th>
+            <th>RegionID</th>
           </tr>
 
           <?php
@@ -246,42 +247,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ?>
   </div>
   <div id="submit">
-    <h2>Add New Salesperson</h2>
+    <h2>Add New Store</h2>
 
-    <form action="salespersons.php" method="post" novalidate>
+    <form action="salesStore.php" method="post" novalidate>
 
       <div>
-        <label>Name:</label>
-        <input type="text" name="name" />
+        <label>StoreID</label>
+        <input type="text" name="storeID" />
       </div>
 
       <div>
-        <label>address:</label>
+        <label>Address</label>
         <input type="text" name="address" />
       </div>
 
       <div>
-        <label>email: </label>
-        <input type="text" name="email" />
+        <label>Manager </label>
+        <input type="text" name="manager" />
       </div>
 
       <div>
-        <label>Job title </label>
-        <input type="text" name="jobTitle" />
+        <label>SalesHeadCount </label>
+        <input type="number" name="salesHeadCount" />
       </div>
 
       <div>
-        <label>Store assigned </label>
-        <input type="text" name="storeAssigned" />
+        <label>RegionID </label>
+        <input type="text" name="regionID" />
       </div>
       
-      <div>
-        <label>Salary </label>
-        <input type="number" name="salary" />
-      </div>
 
       <div>
-        <button id="add" type="submit" value="submit">Add Salesperson</button>
+        <button id="add" type="submit" value="submit">Add Store</button>
       </div>
     </form>
   </div>

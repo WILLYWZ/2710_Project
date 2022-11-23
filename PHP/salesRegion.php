@@ -1,8 +1,16 @@
 <?php 
 include("includes/init.php");
-$title = "productsGuest";
+$title = "region";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
+
+//login session
+session_start();
+
+//print seller ID
+if ($_SESSION['logged_user_by_sql']) {
+    print($_SESSION['logged_user_by_sql']);
+}
 
 function loop($values)
 {
@@ -14,22 +22,18 @@ function print_record($record)
 {
 ?>
   <tr>
-    <td><?php echo htmlspecialchars($record["ProductID"]); ?></td>
-    <td><?php echo htmlspecialchars($record["ProductName"]); ?></td>
-    <td><?php echo htmlspecialchars($record["InventoryAmount"]); ?></td>
-    <td><?php echo htmlspecialchars($record["ProductPrice"]); ?></td>
-    <td><?php echo htmlspecialchars($record["ProductType"]); ?></td>
+    <td><?php echo htmlspecialchars($record["regionID"]); ?></td>
+    <td><?php echo htmlspecialchars($record["regionName"]); ?></td>
+    <td><?php echo htmlspecialchars($record["regionManager"]); ?></td>
   </tr>
 <?php
 }
 
 const SEARCH_FIELDS = [
   "all" => "Select Search Category",
-  "ProductID" => "By ID",
-  "ProductName" => "By Name",
-  "InventoryAmount" => "By Stock",
-  "ProductPrice" => "By Price",
-  "ProductType" => "By Type",
+  "RegionID" => "By ID",
+  "RegionName" => "By Name",
+  "RegionManager" => "By Manager",
 ];
 
 if (isset($_GET['search'])) {
@@ -54,11 +58,10 @@ if (isset($_GET['search'])) {
 }
 
 // get list of products
-$productids = exec_sql_query($db, "SELECT ProductID FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$productnames = exec_sql_query($db, "SELECT ProductName FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$inventoryamounts = exec_sql_query($db, "SELECT InventoryAmount FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$productprices = exec_sql_query($db, "SELECT ProductPrice FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-$producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$regionID = exec_sql_query($db, "SELECT regionID FROM Region", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$regionName = exec_sql_query($db, "SELECT regionName FROM Region", NULL)->fetchAll(PDO::FETCH_COLUMN);
+$regionManager = exec_sql_query($db, "SELECT regionManager FROM Region", NULL)->fetchAll(PDO::FETCH_COLUMN);
+
 ?>
 
 
@@ -75,12 +78,17 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
 </head>
 
 <body>
-  <?php include("includes/headerHome.php"); ?>
+  <?php include("includes/headerSales.php"); ?>
   <div class="sidebar">
-    <a href="guest.php">Home</a>
-    <a class="active" href="productsGuest.php">Products</a>
-    <a href="loginOption.php">Back to Login</a>
-    <a href="createAccount.php">Register As New User</a>
+    <a href="salesHome.php">Home</a>
+    <a href="salesProducts.php">Products</a>
+    <a href="salesCustomers.php">Customers</a>
+    <a href="salesTransactions.php">Transactions</a>
+    <a href="salesOrder.php">Make a Order</a>
+    <a class="active" href="salesRegion.php">Region</a>
+    <a href="salesStore.php">Store</a>
+    <a href="salesSalespersons.php">Salespersons</a>
+    <a href="salesDataAggregation.php">Data Aggregation</a>
   </div>
 
   <div id="main">
@@ -91,7 +99,7 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
     }
     ?>
 
-    <form id="searchForm" action="productsGuest.php" method="get" novalidate>
+    <form id="searchForm" action="salesRegion.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
@@ -110,26 +118,24 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
       <?php
       if ($search_field == "all") {
         // Search across all fields
-        $sql = "SELECT * FROM Products WHERE (ProductID LIKE '%' || :search || '%') 
-                                          OR (ProductName LIKE '%' || :search || '%') 
-                                          OR (InventoryAmount LIKE '%' || :search || '%') 
-                                          OR (ProductPrice LIKE '%' || :search || '%')
-                                          OR (ProductType LIKE '%' || :search || '%') ";
+        $sql = "SELECT * FROM Region WHERE (regionID LIKE '%' || :search || '%') 
+                                          OR (regionName LIKE '%' || :search || '%') 
+                                          OR (regionManager LIKE '%' || :search || '%') ";
         $params = array(
           ':search' => $search
         );
       } else {
         // Search across the specified field
-        $sql = "SELECT * FROM Products WHERE ($search_field LIKE '%' || :search || '%')";
+        $sql = "SELECT * FROM Region WHERE ($search_field LIKE '%' || :search || '%')";
         $params = array(
           ':search' => $search
         );
       }
     } else {
       ?>
-      <h2>Products List</h2>
+      <h2>Region</h2>
       <?php
-      $sql = "SELECT * FROM Products";
+      $sql = "SELECT * FROM Region";
       $params = array();
     }
 
@@ -139,13 +145,11 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
 
       if (count($records) > 0) {
       ?>
-        <table id = "products">
+        <table id = "region">
           <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Inventory Amount</th>
-            <th>Product Price</th>
-            <th>Product Type</th>
+            <th>Region ID</th>
+            <th>Region Name</th>
+            <th>Region Manager</th>
           </tr>
 
           <?php

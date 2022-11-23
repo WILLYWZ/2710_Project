@@ -1,8 +1,13 @@
 <?php 
 include("includes/init.php");
-$title = "products";
+$title = "productsCustomer";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
+
+session_start();
+if ($_SESSION['logged_user_by_sql']) {
+  print($_SESSION['logged_user_by_sql']);
+}
 
 function loop($values)
 {
@@ -59,74 +64,6 @@ $productnames = exec_sql_query($db, "SELECT ProductName FROM Products", NULL)->f
 $inventoryamounts = exec_sql_query($db, "SELECT InventoryAmount FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $productprices = exec_sql_query($db, "SELECT ProductPrice FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
 $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->fetchAll(PDO::FETCH_COLUMN);
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  $productid = $_POST['productid'];
-  $productname = $_POST['productname'];
-  $inventoryamount = $_POST['inventoryamount'];
-  $productprice = $_POST['productprice'];
-  $producttype = $_POST['producttype'];
-
-  $valid_review = TRUE;
-
-  if (!in_array($productid, $productids)) {
-    $valid_review = TRUE;
-  } else {
-    $valid_review = FALSE;
-    array_push($messages, "Product ID already exists!");
-  }
-
-  if ($productid == NULL) {
-    $valid_review = FALSE;
-    array_push($messages, "Product ID could not be empty!");
-  }
-
-  if ($productname == NULL) {
-    $valid_review = FALSE;
-    array_push($messages, "Product Name could not be empty!");
-  }
-
-  if ($inventoryamount == NULL || $inventoryamount < 0) {
-    $valid_review = FALSE;
-    array_push($messages, "Inventory amount should be greater than 0!");
-  }
-
-  if ($productprice == NULL || $productprice < 0) {
-    $valid_review = FALSE;
-    array_push($messages, "Product Price should be greater than 0!");
-  }
-
-  if ($producttype == NULL) {
-    $valid_review = FALSE;
-    array_push($messages, "Product Type could not be empty!");
-  }
-
-
-  if ($valid_review) {
-    $sql = "INSERT INTO Products (ProductID, ProductName, InventoryAmount, ProductPrice, ProductType) VALUES (:ProductID, :ProductName, :InventoryAmount, :ProductPrice, :ProductType)";
-    $params = array(
-      ':ProductID' => $productid,
-      ':ProductName' => $productname,
-      ':InventoryAmount' => $inventoryamount,
-      ':ProductPrice' => $productprice,
-      ':ProductType' => $producttype,
-    );
-    // Insert valid product info into database
-    $result = exec_sql_query($db, $sql, $params);
-    if ($result) {
-      unset($messages);
-      $messages = array();
-      array_push($messages, "Entry Successfully Added");
-    }
-    else {
-      unset($messages);
-      $messages = array();
-      array_push($messages, "Could Not Add Entry");
-    }
-  }
-}
 ?>
 
 
@@ -143,16 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-  <?php include("includes/header.php"); ?>
+  <?php include("includes/headerCustomer.php"); ?>
   <div class="sidebar">
-    <a href="index.php">Home</a>
-    <a class="active" href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="order.php">Make a Order</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
+    <a href="customerInfo.php">Account</a>
+    <a href="customerPurchaseHistory.php">Purchase History</a>
+    <a class="active" href="customerProducts.php">Products Gallery</a>
+    <a href="customerStore.php">Check Our Locations</a>
   </div>
 
   <div id="main">
@@ -163,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    <form id="searchForm" action="products.php" method="get" novalidate>
+    <form id="searchForm" action="customerProducts.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
@@ -233,42 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
     }
     ?>
-  </div>
-  <div id="submit">
-    <h2>Add New Product</h2>
-
-    <form action="products.php" method="post" novalidate>
-
-      <div>
-        <label>Product ID:</label>
-        <input type="text" name="productid" />
-      </div>
-
-      <div>
-        <label>Product Name:</label>
-        <input type="text" name="productname" />
-      </div>
-
-      <div>
-        <label>Inventory Amount: </label>
-        <input type="number" name="inventoryamount" />
-      </div>
-
-      <div>
-        <label>Product Price </label>
-        <input type="text" name="productprice" />
-      </div>
-
-      <div>
-        <label>Product Type </label>
-        <input type="text" name="producttype" />
-      </div>
-
-
-      <div>
-        <button id="add" type="submit" value="submit">Add Product</button>
-      </div>
-    </form>
   </div>
 
   <?php include("includes/footer.php"); ?>

@@ -1,8 +1,8 @@
 <table class="nav">
   <tr>
-    <td href="customerAccount.php" id="logo">
-    <?php 
-      $link_address1 = "customerInfo.php";
+    <td href="salesHome.php" id="logo">
+    <?php
+      $link_address1 = "salesHome.php";
       if($_SESSION['logged_user_by_sql']){
         echo "<a href='".$link_address1."'>Welcome</a>".htmlspecialchars($_SESSION['logged_user_by_sql']) . "! </div>";
       } 
@@ -16,3 +16,4 @@
     </td>
   </tr>
 </table>
+

@@ -18,7 +18,7 @@
     if ( isset($_SESSION['logged_user_by_sql'] ) ) {
             include 'includes/header.php';
         }else{
-            include 'includes/headerHome.php';
+            include 'includes/header.php';
         }
     ?>
 	<div id="content">

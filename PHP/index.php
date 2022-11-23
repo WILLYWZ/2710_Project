@@ -1,7 +1,7 @@
 <?php 
 include("includes/init.php");
-$title = "index";
-// This is the home page for logged-in Merchant
+$title = "guest";
+// This is the page for user to login to the system
 ?>
 
 <!DOCTYPE html>
@@ -24,18 +24,13 @@ $title = "index";
   <?php include("includes/header.php"); ?>
 
   <div class="sidebar">
-    <a class="active" href="home.php">Home</a>
-    <a href="products.php">Products</a>
-    <a href="customers.php">Customers</a>
-    <a href="transactions.php">Transactions</a>
-    <a href="order.php">Make a Order</a>
-    <a href="region.php">Region</a>
-    <a href="store.php">Store</a>
-    <a href="salespersons.php">Salespersons</a>
-    <a href="dataAggregation.php">Data Aggregation</a>
-    <a href="loginOption.php">LOG IN</a>
-    <a href="logout.php">LOG OUT</a>
+    <a class="active" href="index.php">Home</a>
+    <a href="guestProducts.php">Products</a>
+    <a href="guestStore.php">Store Locations</a>
+    <a href="loginOption.php">Back to Login</a>
+    <a href="createAccount.php">Register As New User</a>
   </div>
+
 
   <?php include("includes/footer.php"); ?>
 

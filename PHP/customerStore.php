@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "customerInfo";
+$title = "customerStore";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
 
@@ -157,10 +157,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <?php include("includes/headerCustomer.php"); ?>
 
   <div class="sidebar">
-    <a href="customerAccount.php">Home</a>
     <a href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
-    <a href="productsCustomer.php">Products Gallery</a>
+    <a href="customerProducts.php">Products Gallery</a>
     <a class="active" href="customerStore.php">Check Our Locations</a>
   </div>
 

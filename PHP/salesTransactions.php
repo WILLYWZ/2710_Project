@@ -4,6 +4,14 @@
     $db = open_sqlite_db("data/project.sqlite");
     $messages = array();
 
+    //login session
+    session_start();
+
+    //print seller ID
+    if ($_SESSION['logged_user_by_sql']) {
+        print($_SESSION['logged_user_by_sql']);
+    }
+
     function loop($values){
         foreach ($values as $value) {
             echo "<option value=\"" . htmlspecialchars($value) . "\">" . htmlspecialchars($value) . "</option>";
@@ -80,15 +88,17 @@
     </head>
 
     <body>
-        <?php include("includes/header.php"); ?>
+        <?php include("includes/headerSales.php"); ?>
         <div class="sidebar">
-            <a href="home.php">Home</a>
-            <a href="products.php">Products</a>
-            <a href="customers.php">Customers</a>
-            <a class="active" href="transactions.php">Transactions</a>
-            <a href="region.php">Region</a>
-            <a href="store.php">Store</a>
-            <a href="salespersons.php">Salespersons</a>
+            <a href="salesHome.php">Home</a>
+            <a href="salesProducts.php">Products</a>
+            <a href="salesCustomers.php">Customers</a>
+            <a class="active" href="salesTransactions.php">Transactions</a>
+            <a href="salesOrder.php">Make a Order</a>
+            <a href="salesRegion.php">Region</a>
+            <a href="salesStore.php">Store</a>
+            <a href="salesSalespersons.php">Salespersons</a>
+            <a href="salesDataAggregation.php">Data Aggregation</a>
         </div>
 
         <div id="main">
@@ -99,7 +109,7 @@
                 }
             ?>
 
-            <form id="searchForm" action="transactions.php" method="get" novalidate>
+            <form id="searchForm" action="salesTransactions.php" method="get" novalidate>
                 <select name="category">
                     <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
                     <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>

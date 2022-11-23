@@ -19,10 +19,10 @@ session_start();
 <body>
     <?php
         if (isset($_SESSION['logged_user_by_sql'])) {
-			include 'includes/header.php';
+			include 'includes/headerCustomer.php';
 		}
         else{
-			include 'includes/headerHome.php';
+			include 'includes/header.php';
 		}
     ?>
     <div id="submit">
@@ -62,7 +62,7 @@ session_start();
 
                 if (isset($_SESSION['logged_user_by_sql'])) {
                     print("<p>Congratulations, $db_username! You have logged in.<p>");
-                    print('<p>Click <a href="customerAccount.php">HERE</a> to access your account </p>');
+                    print('<p>Click <a href="customerInfo.php">HERE</a> to access your account </p>');
                 } else {
                     print('<p>You did not login successfully. Please <a href="customerLogin.php">try</a> again. </p>');
                 }
