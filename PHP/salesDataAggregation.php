@@ -20,7 +20,7 @@ function loop($values)
 }
 
 const SEARCH_FIELDS = [
-  "all" => "",
+  "" => "Select Category",
   "sales" => "Sales",
   "profit" => "Profit",
   "type" => "Type",
@@ -35,7 +35,6 @@ const SEARCH_FIELDS = [
     $search_field = $category;
   } 
   else {
-    //array_push($messages, "Invalid Category");
     $do_search = FALSE;
   }
 
@@ -80,8 +79,9 @@ const SEARCH_FIELDS = [
       echo "<p><strong>" . htmlspecialchars($message) . "</strong></p>\n";
     }
     ?>
-    <h2> Sort By: </h2>
+    <h2> Data Aggregation </h2>
     <form id="searchForm" action="salesDataAggregation.php" method="get" novalidate>
+      <p> Sort by 
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>">
@@ -89,12 +89,12 @@ const SEARCH_FIELDS = [
         <?php } ?>
       </select>
       <!--<input type="text" name="search" required />-->
-      <button type="submit">Search</button>
+      <button type="submit">Search</button></p>
     </form>
 
 
     <?php
-    if ($do_search) {
+    if ($do_search && $search_field != "") {
     ?>
       <h2>Results</h2>
 
@@ -139,12 +139,7 @@ const SEARCH_FIELDS = [
       }
     } 
     else {
-      ?>
-      <h2>Data Aggregation</h2>
-      <?php
-      $sql = "SELECT * FROM Products;";
-      
-      //$params = array();
+      echo "<p> Please Select From Drop-down Menu </p>";
     }?>
 
     <?php
@@ -269,7 +264,7 @@ const SEARCH_FIELDS = [
       <?php
       } else {
     // No results found
-          echo "<p> Please Select From Drop Down Menu </p>";
+          echo "<p> Please Select From Drop-down Menu </p>";
       }
     }
     ?>
