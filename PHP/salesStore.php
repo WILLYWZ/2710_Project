@@ -41,6 +41,13 @@ const SEARCH_FIELDS = [
   "regionID" => "By regionID",
 ];
 
+const Region_FIELDS = [
+  "" => "Select Region",
+  "R01" => "R01",
+  "R02" => "R02",
+  "R03" => "R03",
+];
+
 if (isset($_GET['search'])) {
   $do_search = TRUE;
 
@@ -125,17 +132,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ':regionID' => $regionID,
     );
     // Insert valid product info into database
-    $result = exec_sql_query($db, $sql, $params);
-    if ($result) {
-      unset($messages);
-      $messages = array();
-      array_push($messages, "Entry Successfully Added");
-    }
-    else {
-      unset($messages);
-      $messages = array();
-      array_push($messages, "Could Not Add Entry");
-    }
+      $result = exec_sql_query($db, $sql, $params);
+      if ($result) {
+        unset($messages);
+        $messages = array();
+        array_push($messages, "Entry Successfully Added");
+      }
+      else {
+        unset($messages);
+        $messages = array();
+        array_push($messages, "Could Not Add Entry");
+      }
   }
 }
 ?>
@@ -268,15 +275,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div>
         <label>SalesHeadCount </label>
-        <input type="number" name="salesHeadCount" />
+        <input type="number" name="salesHeadCount" min=1 />
       </div>
 
+      
       <div>
         <label>RegionID </label>
-        <input type="text" name="regionID" />
+        <select name="regionID">
+        <?php foreach (Region_FIELDS as $field_name => $label) { ?>
+          <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
+        <?php } ?>
+      </select>
       </div>
       
-
       <div>
         <button id="add" type="submit" value="submit">Add Store</button>
       </div>
