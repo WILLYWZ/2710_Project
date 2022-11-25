@@ -197,7 +197,14 @@
                             // Search across all fields
                             $sql = "SELECT customerID, name, address, kind FROM Customers ";
                             $params = array();
-                        } else {
+                        } else if ($search_field == "address") {
+                            // Search across the specified field
+                            $sql = "SELECT customerID, name, address, kind FROM Customers 
+                                        WHERE (address LIKE '%' || :search || '%')";
+                            $params = array(
+                            ':search' => $search
+                            );
+                        }else {
                             // Search across the specified field
                             $sql = "SELECT customerID, name, address, kind FROM Customers WHERE ($search_field == :search )";
                             $params = array(

@@ -31,7 +31,7 @@
     }
 
     const SEARCH_FIELDS = [
-        "all" => "Select Search Category",
+        "all" => "Select all",
         "ProductID" => "By ID",
         "ProductName" => "By Name",
         "ProductPrice" => "Price Under",
@@ -115,9 +115,9 @@
 
 
         //Date
-        if ($date == NULL) {
+        if ($date == NULL || $date == 0 ) {
             $valid_review = FALSE;
-            array_push($messages, "Date could not be empty!");
+            array_push($messages, "Date could not be empty or zero!");
         }
 
 
@@ -256,20 +256,20 @@
                     <?php
                         if ($search_field == "all") {
                             // Search across all fields
-                            $sql = "SELECT * FROM Products WHERE (ProductID LIKE '%' || :search || '%') 
-                                                            OR (ProductName LIKE '%' || :search || '%') 
-                                                            OR (InventoryAmount LIKE '%' || :search || '%') 
-                                                            OR (ProductPrice LIKE '%' || :search || '%')
-                                                            OR (ProductType LIKE '%' || :search || '%') ";
-                            $params = array(
-                            ':search' => $search
-                            );
+                            $sql = "SELECT * FROM Products ";
+                            $params = array();
                         }else if ($search_field == "ProductPrice") {
                             // Search across all fields
                             $sql = "SELECT * FROM Products WHERE ($search_field <= :search) ";
                             $params = array(
                             ':search' => $search
                             );
+                        }else if ($search_field == "ProductName") {
+                                // Search across all fields
+                                $sql = "SELECT * FROM Products WHERE ($search_field like '%' || :search || '%') ";
+                                $params = array(
+                                ':search' => $search
+                                );
                         } else {
                             // Search across the specified field
                             $sql = "SELECT * FROM Products WHERE ($search_field LIKE '%' || :search || '%')";
@@ -380,7 +380,7 @@
 
             <div>
                 <label>Quantity: </label>
-                <input type="text" name="quantity" />
+                <input type="number" name="quantity" min=1 />
             </div>
 
             <div>
