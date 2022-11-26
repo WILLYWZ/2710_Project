@@ -27,8 +27,8 @@ $title = "guest";
     <a class="active" href="index.php">Home</a>
     <a href="guestProducts.php">Products</a>
     <a href="guestStore.php">Store Locations</a>
-    <a href="loginOption.php">Back to Login</a>
-    <a href="createAccount.php">Register As New User</a>
+    <a href="loginOption.php">LOGIN</a>
+    <a href="signup.php">SIGN UP</a>
   </div>
 
 

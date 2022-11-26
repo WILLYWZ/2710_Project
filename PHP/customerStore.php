@@ -33,7 +33,7 @@ function print_record($record)
 
 //Search drop down menu
 const SEARCH_FIELDS = [
-  "all" => "Select Search Category",
+  "all" => "Search From All",
   "storeID" => "By storeID",
   "address" => "By Address",
   "manager" => "By manager",

@@ -24,11 +24,11 @@ function print_record($record)
 }
 
 const SEARCH_FIELDS = [
-  "all" => "Select Search Category",
+  "all" => "Search From All",
   "ProductID" => "By ID",
   "ProductName" => "By Name",
   "InventoryAmount" => "By Stock",
-  "ProductPrice" => "By Price",
+  "ProductPrice" => "Price Under",
   "ProductType" => "By Type",
 ];
 
@@ -80,8 +80,8 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
     <a href="index.php">Home</a>
     <a class="active" href="guestProducts.php">Products</a>
     <a href="guestStore.php">Store Locations</a>
-    <a href="loginOption.php">Back to Login</a>
-    <a href="createAccount.php">Register As New User</a>
+    <a href="loginOption.php">LOGIN</a>
+    <a href="signup.php">SIGN UP</a>
   </div>
 
   <div id="main">
@@ -119,7 +119,13 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
         $params = array(
           ':search' => $search
         );
-      } else {
+      } else if ($search_field == "ProductPrice"){
+        // Search across the specified field
+        $sql = "SELECT * FROM Products WHERE ($search_field <= :search )";
+        $params = array(
+        ':search' => $search
+        );
+      }else {
         // Search across the specified field
         $sql = "SELECT * FROM Products WHERE ($search_field LIKE '%' || :search || '%')";
         $params = array(

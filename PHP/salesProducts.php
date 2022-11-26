@@ -1,6 +1,6 @@
 <?php 
 include("includes/init.php");
-$title = "products";
+$title = "salesProduct";
 $db = open_sqlite_db("data/project.sqlite");
 $messages = array();
 
@@ -32,11 +32,11 @@ function print_record($record)
 }
 
 const SEARCH_FIELDS = [
-  "all" => "Select Search Category",
+  "all" => "Search From All",
   "ProductID" => "By ID",
   "ProductName" => "By Name",
   "InventoryAmount" => "By Stock",
-  "ProductPrice" => "By Price",
+  "ProductPrice" => "Price Under",
   "ProductType" => "By Type",
 ];
 
@@ -77,40 +77,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $productprice = $_POST['productprice'];
   $producttype = $_POST['producttype'];
 
-  $valid_review = TRUE;
+  //$productExisted = exec_sql_query($db, "SELECT ProductName FROM Products WHERE ProductID = $productid", NULL)->fetchAll();
+  //print($productExisted);
 
-  if (!in_array($productid, $productids)) {
-    $valid_review = TRUE;
-  } else {
-    $valid_review = FALSE;
-    array_push($messages, "Product ID already exists!");
-  }
+  $valid_review = TRUE;
 
   if ($productid == NULL) {
     $valid_review = FALSE;
     array_push($messages, "Product ID could not be empty!");
   }
-
   if ($productname == NULL) {
     $valid_review = FALSE;
     array_push($messages, "Product Name could not be empty!");
   }
-
   if ($inventoryamount == NULL || $inventoryamount < 0) {
     $valid_review = FALSE;
     array_push($messages, "Inventory amount should be greater than 0!");
   }
-
   if ($productprice == NULL || $productprice < 0) {
     $valid_review = FALSE;
     array_push($messages, "Product Price should be greater than 0!");
   }
-
   if ($producttype == NULL) {
     $valid_review = FALSE;
     array_push($messages, "Product Type could not be empty!");
   }
-
+  
+  if ($valid_review) {
+    $productExisted = exec_sql_query($db, "SELECT ProductName FROM Products WHERE ProductID = '$productid' ", NULL)->fetchAll();
+    if ($productExisted != NULL && $productExisted = $productname){
+      $valid_review = FALSE;
+      $sql = "UPDATE Products SET InventoryAmount = $inventoryamount WHERE ProductID = '$productid' ";
+      // Insert valid product info into database
+      $result = exec_sql_query($db, $sql, NULL);
+      unset($messages);
+      $messages = array();
+      array_push($messages, "Product Availability updated!");
+    }
+    else {
+      unset($messages);
+      $messages = array();
+      array_push($messages, "Could Not Add Stock, Product ID and Name does not match");
+    }
+  
+  } 
 
   if ($valid_review) {
     $sql = "INSERT INTO Products (ProductID, ProductName, InventoryAmount, ProductPrice, ProductType) VALUES (:ProductID, :ProductName, :InventoryAmount, :ProductPrice, :ProductType)";
@@ -134,6 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       array_push($messages, "Could Not Add Entry");
     }
   }
+
+  
+
 }
 ?>
 
@@ -200,6 +213,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                           OR (ProductType LIKE '%' || :search || '%') ";
         $params = array(
           ':search' => $search
+        );
+      } else if ($search_field == "ProductPrice"){
+        // Search across the specified field
+        $sql = "SELECT * FROM Products WHERE ($search_field <= :search )";
+        $params = array(
+        ':search' => $search
         );
       } else {
         // Search across the specified field
