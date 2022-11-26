@@ -35,12 +35,13 @@ select {
 form {
   margin-bottom: 20px;
 }
+
 .nav {
   border-spacing: 0;
   margin: 0% 0% 1% 0;
   width: 100%;
   line-height: 3.5em;
-  background-image: linear-gradient(to right, rgba(241, 237, 168, 0.7), rgba(246, 245, 238, 0.7));
+  background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
 }
 
 #main {
@@ -77,36 +78,40 @@ footer {
   margin-top: 2%;
 }
 button {
-  border: none;
-  border-radius: 5px;
+  border-radius: 0px;
   font-size: 1em;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
-  background-color: rgb(51, 27, 78);
+  background-color: rgb(255, 255, 255);
   padding: 10px;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1) inset;
 }
+
 #submit {
+  border:rgb(0, 0, 0);
   margin-left: 25%;
-  background-color: rgba(218, 218, 218, 0.7);
+  background-color: rgb(255, 255, 255);
   line-height: 3em;
   width: 50%;
   padding: 1%;
-  border-radius: 10px;
-    font-weight: lighter;
-  margin-top: 3%;
+  margin-top: 8%;
+  border: solid rgb(0, 0, 0);
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 h2 {
   text-align: center;
-  margin: 1%;
 }
 
 #submit input {
   border-radius: 5px;
-  border: none;
   width: 20%;
   height: 20px;
   margin: 15px;
+  border: none;
+  border-bottom: solid rgb(0, 0, 0);
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 
@@ -114,7 +119,6 @@ h2 {
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
   background-color: #ffffff;
   position: fixed;
   height: 100%;
@@ -125,14 +129,15 @@ h2 {
 .sidebar a {
   display: block;
   color: black;
-  padding: 16px;
+  padding: 12px;
   text-decoration: none;
 }
 
 /* Active/current link */
 .sidebar a.active {
-  background-color: rgba(241, 237, 168, 0.7);
-  color: rgb(42, 36, 75);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 180%;
 }
 
 /* Links on mouse-over */
@@ -180,3 +185,14 @@ h3 {
 #main1 {
   text-align: center;
 }
+
+/* Search form: form id: searchForm*/
+#searchForm {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+
+

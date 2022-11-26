@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php } ?>
       </select>
       <input type="text" name="search" required />
-      <button type="submit">Search</button>
+      <button type="submit">FILTER</button>
     </form>
 
 
