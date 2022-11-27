@@ -25,9 +25,9 @@ session_start();
 			include 'includes/header.php';
 		}
     ?>
-    <div id="submit">
+    <div id="scloginsubmit">
 
-        <h2>Customer Login</h2>
+        <h4>Customer Login</h4>
             <form action="customerLogin.php" method="post">
             <div>
                 <label>Customer ID:</label>

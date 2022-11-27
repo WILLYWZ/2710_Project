@@ -8,9 +8,9 @@ session_start();
 
 //print customer ID
 $session_id = $_SESSION['logged_user_by_sql'];
-if ($_SESSION['logged_user_by_sql']) {
-    print($_SESSION['logged_user_by_sql']);
-}
+//if ($_SESSION['logged_user_by_sql']) {
+    //print($_SESSION['logged_user_by_sql']);
+//}
 
 function print_orderRecord($record)
 {
@@ -103,6 +103,7 @@ function print_priceAndQuality($record)
     ?>
     <?php
     //print($session_id);
+    //$sql = " SELECT orderNumber, date, ProductID, price, quantity FROM Transactions WHERE customerID == '$session_id' ";
     $sql = " SELECT orderNumber, date, ProductID, price, quantity FROM Transactions WHERE customerID == '$session_id' ";
     $results = exec_sql_query($db, $sql, NULL);
     if ($results) {
@@ -112,9 +113,9 @@ function print_priceAndQuality($record)
 
       <table id = "products">
           <tr>
-            <th>Order Number</th>
+            <th>Order#</th>
             <th>Date</th>
-            <th>Product ID</th>
+            <th>Product</th>
             <th>Price</th>
             <th>Quality</th>
           </tr>

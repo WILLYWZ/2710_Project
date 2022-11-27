@@ -112,9 +112,9 @@
             ?>
         </div>
 
-        <div id="submit">
+        <div id="signupsubmit">
             
-            <h2>Create Account</h2>
+            <h4>Create Account</h4>
 
             <form action="signup.php" method="post" novalidate>
 
@@ -144,7 +144,7 @@
                 </div>
 
                 <div>
-                    <button id="add" type="submit" value="submit">SIGN UP</button>
+                    <button id="loginbutton" type="submit" value="submit">SIGN UP</button>
                 </div>
             </form>
         </div>

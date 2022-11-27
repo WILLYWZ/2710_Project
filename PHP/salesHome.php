@@ -99,7 +99,7 @@ function print_salesRecord($record)
       } else {
         // No results found
         echo " "."<br>"." ";
-        echo "<p> You have not made any purchase. </p>";
+        echo "<p> You have not sold anything. </p>";
       }
     }
     ?>

@@ -190,7 +190,7 @@
             <?php
                 if ($do_search) {
                     ?>
-                    <h2>Search Results</h2>
+                    <h5>Search Results</h5>
 
                     <?php
                         if ($search_field == "All") {
@@ -213,7 +213,7 @@
                         }
                 } else {
                     ?>
-                    <h2>Customers List</h2>
+                    <h5>Customers List</h5>
                     <?php
                         $sql = "SELECT customerID, name, address, kind FROM Customers";
                         $params = array();

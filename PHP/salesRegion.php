@@ -113,7 +113,7 @@ $regionManager = exec_sql_query($db, "SELECT regionManager FROM Region", NULL)->
     <?php
     if ($do_search) {
     ?>
-      <h2>Search Results</h2>
+      <h5>Search Results</h5>
 
       <?php
       if ($search_field == "all") {
@@ -133,7 +133,7 @@ $regionManager = exec_sql_query($db, "SELECT regionManager FROM Region", NULL)->
       }
     } else {
       ?>
-      <h2>Region</h2>
+      <h5>Region</h5>
       <?php
       $sql = "SELECT * FROM Region";
       $params = array();

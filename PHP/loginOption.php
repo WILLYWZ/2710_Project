@@ -21,16 +21,16 @@ $title = "loginOption";
 
 <body>
   <?php include("includes/header.php"); ?>
-    <div id="submit">
-      <a href="customerLogin.php" id="logo">Login as Customer</a>
+    <div id="loginsubmit">
+      <a href="customerLogin.php" id="loginbutton">LOGIN as Customer</a>
     </div>
 
-    <div id="submit">
-      <a href="salesLogin.php" id="logo">Login as Salesperson</a>
+    <div id="loginsubmit">
+      <a href="salesLogin.php" id="loginbutton">LOGIN as Merchant</a>
     </div>
 
-    <div id="submit">
-      <a href="index.php" id="logo">Continue As Guest</a>
+    <div id="loginsubmit">
+      <a href="index.php" id="loginbutton">Continue as Guest</a>
     </div>
 
   <?php include("includes/footer.php"); ?>

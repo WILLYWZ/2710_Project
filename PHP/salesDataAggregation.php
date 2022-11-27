@@ -79,7 +79,7 @@ const SEARCH_FIELDS = [
       echo "<p><strong>" . htmlspecialchars($message) . "</strong></p>\n";
     }
     ?>
-    <h2> Data Aggregation </h2>
+    <h5> Sales Aggregation Summary </h5>
     <form id="searchForm" action="salesDataAggregation.php" method="get" novalidate>
       <p> Sort by 
       <select name="category">
@@ -96,7 +96,7 @@ const SEARCH_FIELDS = [
     <?php
     if ($do_search && $search_field != "") {
     ?>
-      <h2>Results</h2>
+      <h5>Results</h5>
 
       <?php
       if ($search_field == "sales") {

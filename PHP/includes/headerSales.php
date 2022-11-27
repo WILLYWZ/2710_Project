@@ -11,7 +11,7 @@
       }
     ?>
     </td>
-    <td id="submitlink">
+    <td id="submitlinklogout">
       <a href="logout.php">LOGOUT</a>
     </td>
   </tr>

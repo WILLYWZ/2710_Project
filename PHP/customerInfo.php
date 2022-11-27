@@ -8,9 +8,9 @@ session_start();
 
 //print customer ID
 $session_id = $_SESSION['logged_user_by_sql'];
-if ($_SESSION['logged_user_by_sql']) {
-    print($session_id);
-}
+//if ($_SESSION['logged_user_by_sql']) {
+    //print($session_id);
+//}
 
 function print_customerID($record)
 {
@@ -73,7 +73,7 @@ function print_customerKind($record)
   </div>
   
   <div>
-    <h3>Account Details</h3>
+    <h3>Your Account: </h3>
   </div>
 
   <div id="main">
@@ -92,15 +92,19 @@ function print_customerKind($record)
       $records = $results->fetchAll();
       if (count($records) > 0) {
       ?>
+      <div id='account'>
           <?php
           foreach ($records as $record) {
-            echo "ID:"."<br>"." ";
+            echo "<span style='font-size: 20px; color: #000000; font-weight: bold;'>ID:"."<br>"."</span>";
             echo $record['customerID']."<br>"." ";
-            echo "Name: "."<br>"." ";
+            echo "<br>";
+            echo "<span style='font-size: 20px; color: #000000; font-weight: bold;'>Name: "."<br>"."</span>";
             echo $record['name']."<br>"." ";
-            echo "Address: "."<br>"." ";
+            echo "<br>";
+            echo "<span style='font-size: 20px; color: #000000; font-weight: bold;'>Address: "."<br>"."</span>";
             echo $record['address']."<br>"." ";
-            echo "Account Type: "."<br>"." ";
+            echo "<br>";
+            echo "<span style='font-size: 20px; color: #000000; font-weight: bold;'>Account Type: "."<br>"."</span>";
             echo $record['kind']."<br>"." ";
             //print_customerID($record);
             //print_customerName($record);
@@ -108,6 +112,7 @@ function print_customerKind($record)
             //print_customerKind($record);
           }
           ?>
+      </div>
     <?php
       } else {
         // No results found

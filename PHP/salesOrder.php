@@ -251,7 +251,7 @@
             <?php
                 if ($do_search) {
                     ?>
-                    <h2>Search Results</h2>
+                    <h5>Search Results</h5>
 
                     <?php
                         if ($search_field == "all") {
@@ -279,7 +279,7 @@
                         }
                 }  else {
                     ?>
-                    <h2>Products List</h2>
+                    <h5>Products List</h5>
                     <?php
                     $sql = "SELECT * FROM Products";
                     $params = array();

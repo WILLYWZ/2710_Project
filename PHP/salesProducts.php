@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php
     if ($do_search) {
     ?>
-      <h2>Search Results</h2>
+      <h5>Search Results</h5>
 
       <?php
       if ($search_field == "all") {
@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
     } else {
       ?>
-      <h2>Products List</h2>
+      <h5>Products List</h5>
       <?php
       $sql = "SELECT * FROM Products";
       $params = array();
@@ -243,11 +243,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ?>
         <table id = "products">
           <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Inventory Amount</th>
-            <th>Product Price</th>
-            <th>Product Type</th>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>STOCK</th>
+            <th>PRICE</th>
+            <th>TYPE</th>
           </tr>
 
           <?php
