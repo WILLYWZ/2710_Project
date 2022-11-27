@@ -125,7 +125,7 @@
             <?php
                 if ($do_search) {
                     ?>
-                    <h2>Search Results</h2>
+                    <h5>Search Results</h5>
 
                     <?php
                         if ($search_field == "All") {
@@ -147,7 +147,7 @@
                         }
                 } else {
                     ?>
-                    <h2>Transactions</h2>
+                    <h5>Transactions</h5>
                     <?php
                         $sql = "SELECT * FROM transactions";
                         $params = array();

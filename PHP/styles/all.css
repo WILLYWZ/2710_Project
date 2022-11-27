@@ -85,7 +85,6 @@ button {
   color: rgb(0, 0, 0);
   font-weight: bold;
   background-color: rgb(255, 255, 255);
-  padding: 10px;
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1) inset;
 }
 
@@ -206,9 +205,9 @@ h3 {
 /* Search form: form id: searchForm*/
 #searchForm {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
   box-sizing: border-box;
+  text-align: center;
+  border:rgb(0, 0, 0);
 }
 
 /* loginOption.php*/
@@ -310,12 +309,11 @@ h4 {
 
 
 h5 {
-  margin-right: 10%;
   margin-top: 3%;
   margin-bottom: 3%;
   font-size: 2.5em;
   font-weight: bold;
-  width: 82%;
+  width: 85%;
 }
 
 /* sign up submit (signup.php)*/
