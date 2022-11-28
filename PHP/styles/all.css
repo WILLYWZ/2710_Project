@@ -336,3 +336,17 @@ table {
   width: 80%;
   text-align: center;
 }
+
+#region {
+  width: 84%;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 3%;
+}
+
+#region td {
+  width: 10%;
+}
+#region a {
+  color: black;
+}

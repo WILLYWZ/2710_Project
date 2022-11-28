@@ -139,7 +139,7 @@ const SEARCH_FIELDS = [
       }
     } 
     else {
-      echo "<p> Please Select From Drop-down Menu </p>";
+      echo "";
     }?>
 
     <?php
