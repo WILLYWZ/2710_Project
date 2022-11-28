@@ -150,7 +150,7 @@ const SEARCH_FIELDS = [
 
       if ($search_field == "sales") {
       ?>
-        <table id = "sales">
+        <table id = "products">
           <tr>
             <th>ProductName</th>
             <th>Sales</th>
@@ -171,7 +171,7 @@ const SEARCH_FIELDS = [
     <?php
       } elseif ($search_field == "profit") {
         ?>
-          <table id = "profit">
+          <table id = "products">
             <tr>
               <th>ProductName</th>
               <th>Sales</th>
@@ -193,7 +193,7 @@ const SEARCH_FIELDS = [
       <?php
       } elseif ($search_field == "type") {
         ?>
-          <table id = "profit">
+          <table id = "products">
             <tr>
               <th>ProductType</th>
               <th>Sales</th>
@@ -215,7 +215,7 @@ const SEARCH_FIELDS = [
       <?php
       } elseif ($search_field == "region") {
         ?>
-          <table id = "region">
+          <table id = "products">
             <tr>
               <th>RegionID</th>
               <th>RegionName</th>
@@ -236,7 +236,7 @@ const SEARCH_FIELDS = [
       <?php
       } elseif ($search_field == "product") {
         ?>
-          <table id = "product">
+          <table id = "products">
             <tr>
               <th>CustomerID</th>
               <th>Name</th>
