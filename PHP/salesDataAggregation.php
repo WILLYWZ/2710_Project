@@ -21,11 +21,11 @@ function loop($values)
 
 const SEARCH_FIELDS = [
   "" => "Select Category",
-  "sales" => "Sales",
-  "profit" => "Profit",
-  "type" => "Type",
-  "region" => "Region Sales",
-  "product" => "Product(Business)",
+  "sales" => "Total Amount of Sales",
+  "profit" => "Total Amount of Profit",
+  "type" => "Best Selling Type of Product",
+  "region" => "Region with Greatest Sales",
+  "product" => "Business Buying the Most Products",
 ];
 
   $do_search = TRUE;
@@ -81,14 +81,13 @@ const SEARCH_FIELDS = [
     ?>
     <h5> Sales Aggregation Summary </h5>
     <form id="searchForm" action="salesDataAggregation.php" method="get" novalidate>
-      <p> Sort by 
+      <p> Display the Aggregation of Sales in Descending Order by: 
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>">
           <?php echo htmlspecialchars($label); ?></option>
         <?php } ?>
       </select>
-      <!--<input type="text" name="search" required />-->
       <button type="submit">Search</button></p>
     </form>
 
@@ -96,7 +95,6 @@ const SEARCH_FIELDS = [
     <?php
     if ($do_search && $search_field != "") {
     ?>
-      <h5>Results</h5>
 
       <?php
       if ($search_field == "sales") {
