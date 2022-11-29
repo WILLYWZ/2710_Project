@@ -26,10 +26,10 @@ function print_record($record)
 //Search drop down menu
 const SEARCH_FIELDS = [
   "all" => "Select From All",
-  "storeID" => "By storeID",
+  "storeID" => "By Store ID",
   "address" => "By Address",
-  "manager" => "By manager",
-  "salesHeadCount" => "By salesHeadCount",
+  "manager" => "By Name of Manager",
+  "salesHeadCount" => "By Headcount of Salesrep",
   "regionID" => "By regionID",
 ];
 
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="sidebar">
     <a href="index.php">Home</a>
     <a href="guestProducts.php">Products</a>
-    <a class="active" href="guestStore.php">Store Locations</a>
+    <a class="active" href="guestStore.php">Locations</a>
     <a href="loginOption.php">LOGIN</a>
     <a href="signup.php">SIGN UP</a>
   </div>

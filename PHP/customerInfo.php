@@ -69,7 +69,7 @@ function print_customerKind($record)
     <a class="active" href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
     <a href="customerProducts.php">Products Gallery</a>
-    <a href="customerStore.php">Check Our Locations</a>
+    <a href="customerStore.php">Locations</a>
   </div>
   
   <div>

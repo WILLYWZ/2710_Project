@@ -79,7 +79,7 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
   <div class="sidebar">
     <a href="index.php">Home</a>
     <a class="active" href="guestProducts.php">Products</a>
-    <a href="guestStore.php">Store Locations</a>
+    <a href="guestStore.php">Locations</a>
     <a href="loginOption.php">LOGIN</a>
     <a href="signup.php">SIGN UP</a>
   </div>

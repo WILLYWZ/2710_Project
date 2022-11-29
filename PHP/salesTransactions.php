@@ -36,13 +36,13 @@
 
     const SEARCH_FIELDS = [
         "All" => "Select All",
-        "transactionID" => "By transactionID",
+        "transactionID" => "By Transaction ID",
         "date" => "By Date",
         "SalespersonName" => "By Salesperson",
-        "ProductID" => "By ProductID",
+        "ProductID" => "By Product ID",
         "price" => "Price Under",
-        "customerID" => "By customerID",
-        "regionID" => "By regionID",
+        "customerID" => "By Customer ID",
+        "regionID" => "By Region ID",
     ];
 
     if (isset($_GET['search'])) {

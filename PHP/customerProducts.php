@@ -85,7 +85,7 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
     <a href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
     <a class="active" href="customerProducts.php">Products Gallery</a>
-    <a href="customerStore.php">Check Our Locations</a>
+    <a href="customerStore.php">Locations</a>
   </div>
 
   <div id="main">

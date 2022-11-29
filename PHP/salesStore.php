@@ -34,11 +34,11 @@ function print_record($record)
 //Search drop down menu
 const SEARCH_FIELDS = [
   "all" => "Select Search Category",
-  "storeID" => "By storeID",
+  "storeID" => "By Store ID",
   "address" => "By Address",
-  "manager" => "By manager",
-  "salesHeadCount" => "By salesHeadCount",
-  "regionID" => "By regionID",
+  "manager" => "By Manager",
+  "salesHeadCount" => "By Headcount of Salesrep",
+  "regionID" => "By Region ID",
 ];
 
 const Region_FIELDS = [

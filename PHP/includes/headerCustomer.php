@@ -4,7 +4,7 @@
     <?php 
       $link_address1 = "customerInfo.php";
       if($_SESSION['logged_user_by_sql']){
-        echo "<a href='".$link_address1."'>Welcome</a>".htmlspecialchars($_SESSION['logged_user_by_sql']) . "! </div>";
+        echo "<a href='".$link_address1."'>Welcome to ComforTABLE, </a>".htmlspecialchars($_SESSION['logged_user_by_sql']) . "! </div>";
       } 
       else{
         echo "Welcome! Please LOGIN or Continue as Guest!";

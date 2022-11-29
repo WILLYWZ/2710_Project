@@ -34,11 +34,11 @@ function print_record($record)
 //Search drop down menu
 const SEARCH_FIELDS = [
   "all" => "Search From All",
-  "storeID" => "By storeID",
+  "storeID" => "By Store ID",
   "address" => "By Address",
   "manager" => "By manager",
-  "salesHeadCount" => "By salesHeadCount",
-  "regionID" => "By regionID",
+  "salesHeadCount" => "By Headcount of Salesrep",
+  "regionID" => "By Region ID",
 ];
 
 if (isset($_GET['search'])) {
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
     <a href="customerProducts.php">Products Gallery</a>
-    <a class="active" href="customerStore.php">Check Our Locations</a>
+    <a class="active" href="customerStore.php">Locations</a>
   </div>
 
   <div id="main">
