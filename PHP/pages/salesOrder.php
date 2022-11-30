@@ -222,7 +222,7 @@
             <a href="salesProducts.php">Products</a>
             <a href="salesCustomers.php">Customers</a>
             <a href="salesTransactions.php">Transactions</a>
-            <a class="active" href="salesOrder.php">Make a Order</a>
+            <a class="active" href="salesOrder.php">Place an Order</a>
             <a href="salesRegion.php">Region</a>
             <a href="salesStore.php">Store</a>
             <a href="salesSalespersons.php">Salespersons</a>
@@ -237,13 +237,17 @@
                 }
             ?>
 
+            <?php
+                $search = (isset($_GET['search'])) ? htmlentities($_GET['search']) : '';
+            ?>
+
             <form id="searchForm" action="salesOrder.php" method="get" novalidate>
                 <select name="category">
                     <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
                     <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
                     <?php } ?>
                 </select>
-                <input type="text" name="search" required />
+                <input type="text" name="search" value="<?= $search ?>" required />
                 <button type="submit">Search</button>
             </form>
 

@@ -51,7 +51,7 @@ function print_salesRecord($record)
     <a href="salesProducts.php">Products</a>
     <a href="salesCustomers.php">Customers</a>
     <a href="salesTransactions.php">Transactions</a>
-    <a href="salesOrder.php">Make a Order</a>
+    <a href="salesOrder.php">Place an Order</a>
     <a href="salesRegion.php">Region</a>
     <a href="salesStore.php">Store</a>
     <a href="salesSalespersons.php">Salespersons</a>

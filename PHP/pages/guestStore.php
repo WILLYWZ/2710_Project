@@ -164,13 +164,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
+    <?php
+    $search = (isset($_GET['search'])) ? htmlentities($_GET['search']) : '';
+    ?>
+
     <form id="searchForm" action="guestStore.php" method="get" novalidate>
       <select name="category">
         <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
           <option value="<?php echo htmlspecialchars($field_name); ?>"><?php echo htmlspecialchars($label); ?></option>
         <?php } ?>
       </select>
-      <input type="text" name="search" required />
+      <input type="text" name="search" value="<?= $search ?>" required />
       <button type="submit">Search</button>
     </form>
 

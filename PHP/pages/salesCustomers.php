@@ -159,7 +159,7 @@
             <a href="salesProducts.php">Products</a>
             <a class="active" href="salesCustomers.php">Customers</a>
             <a href="salesTransactions.php">Transactions</a>
-            <a href="salesOrder.php">Make a Order</a>
+            <a href="salesOrder.php">Place an Order</a>
             <a href="salesRegion.php">Region</a>
             <a href="salesStore.php">Store</a>
             <a href="salesSalespersons.php">Salespersons</a>
@@ -174,6 +174,10 @@
                 }
             ?>
 
+            <?php
+                $search = (isset($_GET['search'])) ? htmlentities($_GET['search']) : '';
+            ?>
+
             <form id="searchForm" action="salesCustomers.php" method="get" novalidate>
                 <select name="category">
                     <?php foreach (SEARCH_FIELDS as $field_name => $label) { ?>
@@ -181,7 +185,7 @@
                     <?php } ?>
                 </select>
 
-                <input type="text" name="search" required />
+                <input type="text" name="search" value="<?= $search ?>" required />
 
                 <button type="submit">Search</button>
             </form>
