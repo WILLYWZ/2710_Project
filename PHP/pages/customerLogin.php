@@ -1,7 +1,7 @@
 <?php 
-include("includes/init.php");
+include("../includes/init.php");
 $title = "customerLogin";
-$db = open_sqlite_db("data/project.sqlite");
+$db = open_sqlite_db("../data/project.sqlite");
 session_start();
 ?>
 
@@ -13,16 +13,16 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>E-Commerce Database</title>
-  <link rel="stylesheet" href="styles/all.css">
+  <link rel="stylesheet" href="../styles/all.css">
 </head>
 
 <body>
     <?php
         if (isset($_SESSION['logged_user_by_sql'])) {
-			include 'includes/headerCustomer.php';
+			include '../includes/headerCustomer.php';
 		}
         else{
-			include 'includes/header.php';
+			include '../includes/header.php';
 		}
     ?>
     <div id="scloginsubmit">

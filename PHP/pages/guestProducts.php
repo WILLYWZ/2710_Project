@@ -1,7 +1,7 @@
 <?php 
-include("includes/init.php");
+include("../includes/init.php");
 $title = "guestProducts";
-$db = open_sqlite_db("data/project.sqlite");
+$db = open_sqlite_db("../data/project.sqlite");
 $messages = array();
 
 function loop($values)
@@ -71,13 +71,13 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>E-Commerce Database</title>
-  <link rel="stylesheet" href="styles/all.css">
+  <link rel="stylesheet" href="../styles/all.css">
 </head>
 
 <body>
-  <?php include("includes/header.php"); ?>
+  <?php include("../includes/header.php"); ?>
   <div class="sidebar">
-    <a href="index.php">Home</a>
+    <a href="../index.php">Home</a>
     <a class="active" href="guestProducts.php">Products</a>
     <a href="guestStore.php">Locations</a>
     <a href="loginOption.php">LOGIN</a>
@@ -170,7 +170,7 @@ $producttypes = exec_sql_query($db, "SELECT ProductType FROM Products", NULL)->f
     ?>
   </div>
 
-  <?php include("includes/footer.php"); ?>
+  <?php include("../includes/footer.php"); ?>
 
 </body>
 

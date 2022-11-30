@@ -25,10 +25,10 @@ $title = "guest";
 
   <div class="sidebar">
     <a class="active" href="index.php">Home</a>
-    <a href="guestProducts.php">Products</a>
-    <a href="guestStore.php">Locations</a>
-    <a href="loginOption.php">LOGIN</a>
-    <a href="signup.php">SIGN UP</a>
+    <a href="pages/guestProducts.php">Products</a>
+    <a href="pages/guestStore.php">Locations</a>
+    <a href="pages/loginOption.php">LOGIN</a>
+    <a href="pages/signup.php">SIGN UP</a>
   </div>
 
 

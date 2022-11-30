@@ -1,16 +1,16 @@
 <?php 
-    include("includes/init.php");
+    include("../includes/init.php");
     $title = "Customers";
-    $db = open_sqlite_db("data/project.sqlite");
+    $db = open_sqlite_db("../data/project.sqlite");
     $messages = array();
 
     //login session
     session_start();
 
     //print seller ID
-    if ($_SESSION['logged_user_by_sql']) {
-        print($_SESSION['logged_user_by_sql']);
-    }
+    //if ($_SESSION['logged_user_by_sql']) {
+        //print($_SESSION['logged_user_by_sql']);
+    //}
 
     function loop($values){
         foreach ($values as $value) {
@@ -149,11 +149,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>E-Commerce Database</title>
-        <link rel="stylesheet" href="styles/all.css">
+        <link rel="stylesheet" href="../styles/all.css">
     </head>
 
     <body>
-        <?php include("includes/headerSales.php"); ?>
+        <?php include("../includes/headerSales.php"); ?>
         <div class="sidebar">
             <a href="salesHome.php">Home</a>
             <a href="salesProducts.php">Products</a>
@@ -283,7 +283,7 @@
             </form>
         </div>
 
-        <?php include("includes/footer.php"); ?>
+        <?php include("../includes/footer.php"); ?>
 
     </body>
 

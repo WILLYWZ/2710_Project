@@ -1,16 +1,16 @@
 <?php 
-include("includes/init.php");
+include("../includes/init.php");
 $title = "home";
-$db = open_sqlite_db("data/project.sqlite");
+$db = open_sqlite_db("../data/project.sqlite");
 $messages = array();
 // This is the page for user to login to the system
 session_start();
 
 //print seller ID
 $session_id = $_SESSION['logged_user_by_sql'];
-if ($_SESSION['logged_user_by_sql']) {
-  print($_SESSION['logged_user_by_sql']);
-}
+//if ($_SESSION['logged_user_by_sql']) {
+  //print($_SESSION['logged_user_by_sql']);
+//}
 
 function print_salesRecord($record)
 {
@@ -35,7 +35,7 @@ function print_salesRecord($record)
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>E-Commerce Database</title>
-  <link rel="stylesheet" href="styles/all.css">
+  <link rel="stylesheet" href="../styles/all.css">
 </head>
 
 <!-- Page content -->
@@ -44,7 +44,7 @@ function print_salesRecord($record)
 </div>
 
 <body>
-  <?php include("includes/headerSales.php"); ?>
+  <?php include("../includes/headerSales.php"); ?>
 
   <div class="sidebar">
     <a class="active" href="salesHome.php">Home</a>
@@ -147,7 +147,7 @@ function print_salesRecord($record)
     ?>
 
 
-  <?php include("includes/footer.php"); ?>
+  <?php include("../includes/footer.php"); ?>
 
 </body>
 
