@@ -299,7 +299,7 @@
                         <tr>
                             <th>Product ID</th>
                             <th>Product Name</th>
-                            <th>Inventory Amount</th>
+                            <th>Stock</th>
                             <th>Product Price</th>
                             <th>Product Type</th>
                         </tr>
@@ -327,7 +327,7 @@
 
         <div id="submit">
             
-            <h2>Make New Order</h2>
+            <h2>Place New Order</h2>
 
             <form action="salesOrder.php" method="post" novalidate>
 

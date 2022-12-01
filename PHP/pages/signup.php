@@ -12,6 +12,12 @@
     $customerPasswords = exec_sql_query($db, "SELECT customerPassword FROM Customers", NULL)->fetchAll(PDO::FETCH_COLUMN);
 
 
+    function function_alert($message) {
+        // Display the alert box 
+        echo "<script>alert('$message');</script>";
+    }
+
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $customerID = $_POST['customerID'];
