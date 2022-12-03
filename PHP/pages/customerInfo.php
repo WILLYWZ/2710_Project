@@ -56,7 +56,7 @@ function print_customerKind($record)
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>E-Commerce Database</title>
+  <title>ComforTABLE</title>
   <link rel="stylesheet" href="../styles/all.css">
 </head>
 
@@ -68,7 +68,7 @@ function print_customerKind($record)
   <div class="sidebar">
     <a class="active" href="customerInfo.php">Account</a>
     <a href="customerPurchaseHistory.php">Purchase History</a>
-    <a href="customerProducts.php">Products Gallery</a>
+    <a href="customerProducts.php">Products</a>
     <a href="customerStore.php">Locations</a>
   </div>
   

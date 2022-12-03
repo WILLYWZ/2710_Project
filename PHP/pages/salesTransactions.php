@@ -83,7 +83,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>E-Commerce Database</title>
+        <title>ComforTABLE</title>
         <link rel="stylesheet" href="../styles/all.css">
     </head>
 

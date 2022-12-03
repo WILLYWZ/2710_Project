@@ -352,3 +352,22 @@ table {
 #region a {
   color: black;
 }
+
+h6 {
+  margin-top: 13%;
+  margin-bottom: 3%;
+  margin-left: 2%;
+  font-size: 2em;
+  font-weight: bold;
+  width: 85%;
+}
+
+h7 {
+  margin-top: 20%;
+  margin-bottom: 3%;
+  margin-right: 10%;
+  font-size: 2em;
+  font-weight: bold;
+  width: 85%;
+}
+

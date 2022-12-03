@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>E-Commerce Database</title>
+  <title>ComforTABLE</title>
   <link rel="stylesheet" href="../styles/all.css">
 </head>
 
@@ -275,27 +275,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div>
         <label>Product ID:</label>
-        <input type="text" name="productid" />
+        <input type="text" name="productid" value="<?= $productid ?>" />
       </div>
 
       <div>
         <label>Product Name:</label>
-        <input type="text" name="productname" />
+        <input type="text" name="productname" value="<?= $productname ?>" />
       </div>
 
       <div>
-        <label>Inventory Amount: </label>
-        <input type="number" name="inventoryamount" />
+        <label>Stock: </label>
+        <input type="number" name="inventoryamount" value="<?= $inventoryamount ?>" />
       </div>
 
       <div>
         <label>Product Price </label>
-        <input type="text" name="productprice" />
+        <input type="text" name="productprice" value="<?= $productprice ?>"/>
       </div>
 
       <div>
         <label>Product Type </label>
-        <input type="text" name="producttype" />
+        <input type="text" name="producttype" value="<?= $producttype ?>" />
       </div>
 
 

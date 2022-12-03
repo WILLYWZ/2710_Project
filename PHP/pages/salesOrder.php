@@ -211,7 +211,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>E-Commerce Database</title>
+        <title>ComforTABLE</title>
         <link rel="stylesheet" href="../styles/all.css">
     </head>
 
@@ -335,17 +335,17 @@
 
             <div>
                 <label>transaction ID:</label>
-                <input type="text" name="transactionID" />
+                <input type="text" name="transactionID" value="<?= $transactionid ?>" />
             </div>
 
             <div>
                 <label>OrderNumber:</label>
-                <input type="text" name="orderNumber" />
+                <input type="text" name="orderNumber" value="<?= $ordernumber ?>" />
             </div>
 
             <div>
                 <label>date: </label>
-                <input type="date" name="date" />
+                <input type="date" name="date" value="<?= $date ?>" />
             </div>
 
             <div>
@@ -379,12 +379,12 @@
 
             <div>
                 <label>Price: </label>
-                <input type="text" name="price" />
+                <input type="text" name="price" value="<?= $price ?>"/>
             </div>
 
             <div>
                 <label>Quantity: </label>
-                <input type="number" name="quantity" min=1 />
+                <input type="number" name="quantity" min=1 value="<?= $quantity ?>" />
             </div>
 
             <div>

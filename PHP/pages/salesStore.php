@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>E-Commerce Database</title>
+  <title>ComforTABLE</title>
   <link rel="stylesheet" href="../styles/all.css">
 </head>
 
@@ -264,22 +264,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div>
         <label>StoreID</label>
-        <input type="text" name="storeID" />
+        <input type="text" name="storeID" value="<?= $storeID ?>"/>
       </div>
 
       <div>
         <label>Address</label>
-        <input type="text" name="address" />
+        <input type="text" name="address" value="<?= $address ?>"/>
       </div>
 
       <div>
         <label>Manager </label>
-        <input type="text" name="manager" />
+        <input type="text" name="manager" value="<?= $manager ?>"/>
       </div>
 
       <div>
         <label>SalesHeadCount </label>
-        <input type="number" name="salesHeadCount" min=1 />
+        <input type="number" name="salesHeadCount" min=1 value="<?= $salesHeadCount ?>"/>
       </div>
 
       

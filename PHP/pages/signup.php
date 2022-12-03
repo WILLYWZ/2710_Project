@@ -95,7 +95,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>E-Commerce Database</title>
+        <title>ComforTABLE</title>
         <link rel="stylesheet" href="../styles/all.css">
     </head>
 
@@ -126,27 +126,27 @@
 
                 <div>
                     <label>ID:</label>
-                    <input type="text" name="customerID" />
+                    <input type="text" name="customerID" value="<?= $customerID ?>" />
                 </div>
 
                 <div>
                     <label>Name:</label>
-                    <input type="text" name="name" />
+                    <input type="text" name="name" value="<?= $customerName ?>"/>
                 </div>
 
                 <div>
                     <label>Address: </label>
-                    <input type="text" name="address" />
+                    <input type="text" name="address" value="<?= $customerAddress ?>"/>
                 </div>
 
                 <div>
                     <label>Customers Type: </label>
-                    <input type="text" name="kind" />
+                    <input type="text" name="kind" value="<?= $customerType ?>"/>
                 </div>
 
                 <div>
                     <label>Password: </label>
-                    <input type="text" name="customerPassword" />
+                    <input type="text" name="customerPassword" value="<?= $customerPassword ?>"/>
                 </div>
 
                 <div>
