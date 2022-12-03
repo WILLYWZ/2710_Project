@@ -34,7 +34,7 @@ $title = "guest";
   <div id="main">
     <h6>‘ComforTABLE’ is a shopping website for various types of Kitchen Wares and Tablewares.</h6>
     <h7>The system is written in PHP and styles with CSS. <br></h7>
-    <h7>The Database is kept in SQLiite. </h7>
+    <h7>The Database is kept in SQLite. </h7>
   </div>
 
 
